@@ -1,4 +1,125 @@
 {
-    "timestamp": "2026-05-13 23:02:58 PDT",
-    "vehicles": []
+    "timestamp": "2026-05-13 23:08:57 PDT",
+    "vehicles": [
+        {
+            "vin": "WBS13HJ07VFW72370",
+            "year": 2027,
+            "model": "M3",
+            "price": "$$90,583",
+            "color": "Portimao Blue Metallic",
+            "dealer": "East Bay BMW",
+            "status": "On Lot",
+            "image": "https://via.placeholder.com/600x400?text=Image+Unavailable",
+            "link": "https://www.eastbaybmw.com/new/WBS13HJ07VFW72370.htm",
+            "is_new": true
+        },
+        {
+            "vin": "WBS23HJ04VFW72234",
+            "year": 2027,
+            "model": "M3 Competition",
+            "price": "$$92,433",
+            "color": "Skyscraper Grey Metallic",
+            "dealer": "East Bay BMW",
+            "status": "On Lot",
+            "image": "https://via.placeholder.com/600x400?text=Image+Unavailable",
+            "link": "https://www.eastbaybmw.com/new/WBS23HJ04VFW72234.htm",
+            "is_new": true
+        },
+        {
+            "vin": "WBS13HJ05TFW44032",
+            "year": 2026,
+            "model": "M3",
+            "price": "$82925.0",
+            "color": "Alpine White",
+            "dealer": "Stevens Creek BMW",
+            "status": "On Lot",
+            "image": "https://via.placeholder.com/600x400?text=Image+Unavailable",
+            "link": "https://www.stevenscreekbmw.com/new/WBS13HJ05TFW44032.htm",
+            "is_new": true
+        },
+        {
+            "vin": "WBS23HJ07VFW68579",
+            "year": 2027,
+            "model": "M3",
+            "price": "$Call",
+            "color": "Black Sapphire Metallic",
+            "dealer": "Stevens Creek BMW",
+            "status": "On Lot",
+            "image": "https://via.placeholder.com/600x400?text=Image+Unavailable",
+            "link": "https://www.stevenscreekbmw.com/new/WBS23HJ07VFW68579.htm",
+            "is_new": true
+        },
+        {
+            "vin": "WBS33HJ04TFW12875",
+            "year": 2026,
+            "model": "M3 Competition",
+            "price": "$$96,710",
+            "color": "Sao Paulo Yellow",
+            "dealer": "BMW of Mountain View",
+            "status": "On Lot",
+            "image": "https://via.placeholder.com/600x400?text=Image+Unavailable",
+            "link": "https://www.bmwofmountainview.com/new/WBS33HJ04TFW12875.htm",
+            "is_new": true
+        },
+        {
+            "vin": "WBS23HJ05TFW36100",
+            "year": 2026,
+            "model": "M3 Competition",
+            "price": "$$104,395",
+            "color": "Dravit Gray",
+            "dealer": "BMW of Mountain View",
+            "status": "On Lot",
+            "image": "https://via.placeholder.com/600x400?text=Image+Unavailable",
+            "link": "https://www.bmwofmountainview.com/new/WBS23HJ05TFW36100.htm",
+            "is_new": true
+        },
+        {
+            "vin": "WBS13HJ03VFW73628",
+            "year": 2027,
+            "model": "M3",
+            "price": "$$88,835",
+            "color": "Portimao Blue Metallic",
+            "dealer": "BMW of Mountain View",
+            "status": "On Lot",
+            "image": "https://via.placeholder.com/600x400?text=Image+Unavailable",
+            "link": "https://www.bmwofmountainview.com/new/WBS13HJ03VFW73628.htm",
+            "is_new": true
+        },
+        {
+            "vin": "WBS23HJ01VFW96796",
+            "year": 2027,
+            "model": "M3",
+            "price": "$$95,385",
+            "color": "Isle Of Man Green Metallic",
+            "dealer": "BMW of Mountain View",
+            "status": "On Lot",
+            "image": "https://via.placeholder.com/600x400?text=Image+Unavailable",
+            "link": "https://www.bmwofmountainview.com/new/WBS23HJ01VFW96796.htm",
+            "is_new": true
+        },
+        {
+            "vin": "WBS33HJ04VFX04815",
+            "year": 2027,
+            "model": "M3",
+            "price": "$$98,900",
+            "color": "Dravit Grey Metallic",
+            "dealer": "BMW of Mountain View",
+            "status": "On Lot",
+            "image": "https://via.placeholder.com/600x400?text=Image+Unavailable",
+            "link": "https://www.bmwofmountainview.com/new/WBS33HJ04VFX04815.htm",
+            "is_new": true
+        },
+        {
+            "vin": "WBS33HJ06VFW83353",
+            "year": 2027,
+            "model": "M3",
+            "price": "$$99,185",
+            "color": "Aventurin Red Metallic",
+            "dealer": "BMW of Mountain View",
+            "status": "On Lot",
+            "image": "https://via.placeholder.com/600x400?text=Image+Unavailable",
+            "link": "https://www.bmwofmountainview.com/new/WBS33HJ06VFW83353.htm",
+            "is_new": true
+        }
+    ]
 }
