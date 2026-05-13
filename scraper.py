@@ -1,5 +1,5 @@
 import json
-import requests
+import cloudscraper
 from datetime import datetime
 import os
 
@@ -23,15 +23,16 @@ def fetch_inventory():
     existing_vins = {car['vin']: car for car in existing_vehicles}
     new_vehicles_found = []
     
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-        'Accept': 'application/json, text/javascript, */*; q=0.01',
-        'Referer': 'https://www.google.com/'
-    }
+    # THE CLOAKING DEVICE: Spoofs a real Mac/Chrome browser to bypass Cloudflare
+    scraper = cloudscraper.create_scraper(browser={
+        'browser': 'chrome',
+        'platform': 'darwin',
+        'desktop': True
+    })
 
     for dealer in DEALERS:
         try:
-            response = requests.get(dealer['url'], headers=headers, timeout=15)
+            response = scraper.get(dealer['url'], timeout=15)
             if response.status_code == 200:
                 data = response.json()
                 if 'pageInfo' in data and 'trackingData' in data['pageInfo']:
@@ -39,7 +40,6 @@ def fetch_inventory():
                         if 'M3' in car.get('model', ''):
                             vin = car.get('vin', 'N/A')
                             
-                            # THE FIX: Check every possible variation of the image label
                             raw_img = car.get('imageUrl') or car.get('imageURL') or car.get('primaryImage') or car.get('image', '')
                             if not raw_img or 'placeholder' in raw_img:
                                 raw_img = 'https://via.placeholder.com/600x400?text=Image+Unavailable'
@@ -47,7 +47,6 @@ def fetch_inventory():
                             if vin in existing_vins:
                                 car_data = existing_vins[vin]
                                 car_data['is_new'] = False 
-                                # Update the photo if the scraper found a better one today
                                 if 'placeholder' in car_data['image'] and 'placeholder' not in raw_img:
                                     car_data['image'] = raw_img
                                 new_vehicles_found.append(car_data)
@@ -65,6 +64,7 @@ def fetch_inventory():
                                     "is_new": True 
                                 })
         except Exception as e:
+            print(f"Blocked by {dealer['name']}: {e}")
             pass 
             
     if len(new_vehicles_found) > 0:
