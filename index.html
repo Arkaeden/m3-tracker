@@ -150,9 +150,9 @@
 </div>
 
 <script>
-    // The clean Revv UI fallback for cars with absolutely no photo provided
     const fallbackImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%23121212'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='12' fill='%23555555' letter-spacing='4'%3EIMAGE PENDING%3C/text%3E%3C/svg%3E";
 
+    // Cache-Busting: Forces the browser to load fresh data every single time
     fetch('data.json?t=' + new Date().getTime())
         .then(response => response.json())
         .then(data => {
@@ -167,20 +167,14 @@
             gallery.innerHTML = ''; 
 
             data.vehicles.forEach(car => {
-                // THE EDGE PROXY FIX
                 let safeImageUrl = car.image;
                 
-                // If it's one of our dummy seeds from placeholder.com, swap it immediately for our sleek REVV SVG
                 if (safeImageUrl.includes('placeholder.com') || !safeImageUrl) {
                     safeImageUrl = fallbackImage;
-                } else {
-                    // Dealerships often forget the 'https:' in their APIs, we add it back
-                    if (safeImageUrl.startsWith('//')) {
-                        safeImageUrl = 'https:' + safeImageUrl;
-                    }
-                    // Wrap the dealership URL in the proxy to instantly bypass the firewall
-                    safeImageUrl = 'https://wsrv.nl/?url=' + encodeURIComponent(safeImageUrl) + '&w=800&q=80&output=webp';
+                } else if (safeImageUrl.startsWith('//')) {
+                    safeImageUrl = 'https:' + safeImageUrl;
                 }
+                // Proxy intentionally removed here!
 
                 const card = `
                     <div class="alt-card">
