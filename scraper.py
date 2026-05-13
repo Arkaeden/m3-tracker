@@ -11,7 +11,6 @@ DEALERS = [
 ]
 
 def fetch_inventory():
-    # 1. LOAD THE MEMORY (Existing cars)
     existing_vehicles = []
     if os.path.exists('data.json'):
         try:
@@ -21,11 +20,9 @@ def fetch_inventory():
         except:
             pass
 
-    # Create a dictionary of existing VINs for quick comparison
     existing_vins = {car['vin']: car for car in existing_vehicles}
     new_vehicles_found = []
     
-    # 2. UPGRADED DISGUISE
     headers = {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
         'Accept': 'application/json, text/javascript, */*; q=0.01',
@@ -42,13 +39,19 @@ def fetch_inventory():
                         if 'M3' in car.get('model', ''):
                             vin = car.get('vin', 'N/A')
                             
-                            # Check if we already have this car in memory
+                            # THE FIX: Check every possible variation of the image label
+                            raw_img = car.get('imageUrl') or car.get('imageURL') or car.get('primaryImage') or car.get('image', '')
+                            if not raw_img or 'placeholder' in raw_img:
+                                raw_img = 'https://via.placeholder.com/600x400?text=Image+Unavailable'
+                            
                             if vin in existing_vins:
                                 car_data = existing_vins[vin]
-                                car_data['is_new'] = False # Remove the 'New' badge from old cars
+                                car_data['is_new'] = False 
+                                # Update the photo if the scraper found a better one today
+                                if 'placeholder' in car_data['image'] and 'placeholder' not in raw_img:
+                                    car_data['image'] = raw_img
                                 new_vehicles_found.append(car_data)
                             else:
-                                # It's a brand new allocation
                                 new_vehicles_found.append({
                                     "vin": vin,
                                     "year": car.get('modelYear', '2024'),
@@ -57,20 +60,18 @@ def fetch_inventory():
                                     "color": car.get('exteriorColor', 'Check Dealer'),
                                     "dealer": dealer['name'],
                                     "status": "In Transit" if car.get('inTransit') else "On Lot",
-                                    "image": car.get('imageURL', 'https://via.placeholder.com/600x400?text=Image+Unavailable'),
+                                    "image": raw_img,
                                     "link": f"https://www.{dealer['name'].replace(' ', '').lower()}.com/new/{vin}.htm",
                                     "is_new": True 
                                 })
         except Exception as e:
-            pass # Silently skip if blocked by dealer firewall
+            pass 
             
-    # 3. FAILSAFE: If blocked today, keep yesterday's data. If brand new, inject live local inventory.
     if len(new_vehicles_found) > 0:
         final_vehicles = new_vehicles_found
     elif len(existing_vehicles) > 0:
         final_vehicles = existing_vehicles
     else:
-        # Hardcoded seed data of actual M3s currently on lots to initialize the gallery
         final_vehicles = [
             {
                 "vin": "WBS33HJ04TFW12875",
