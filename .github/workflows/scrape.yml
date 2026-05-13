@@ -2,18 +2,22 @@ name: Update M3 Inventory
 
 on:
   schedule:
-    - cron: '0 */6 * * *' # Runs every 6 hours automatically
-  workflow_dispatch: # Gives you a button to trigger it manually anytime
+    - cron: '0 */6 * * *' 
+  workflow_dispatch: 
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
+    # This section gives the robot explicit permission to save files
+    permissions:
+      contents: write
+      
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4 # Updated to Node 24 version
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5 # Updated to Node 24 version
         with:
           python-version: '3.10'
 
@@ -28,5 +32,10 @@ jobs:
           git config --global user.name 'M3 Scraper Bot'
           git config --global user.email 'bot@m3tracker.local'
           git add data.json
-          git commit -m "Automated inventory update" || exit 0
-          git push
+          # This "if" part makes sure the robot doesn't crash if no new cars were found
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Automated inventory update"
+            git push
+          fi
