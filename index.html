@@ -152,7 +152,20 @@
 <script>
     const fallbackImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%23121212'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='12' fill='%23555555' letter-spacing='4'%3EIMAGE PENDING%3C/text%3E%3C/svg%3E";
 
-    // Cache-Busting: Forces the browser to load fresh data every single time
+    // YOUR CUSTOM IMAGE HOSTING DICTIONARY
+    // Just replace the URLs below with the links to the images you create.
+    const colorAssets = {
+        "yellow": "https://via.placeholder.com/800x500/1a1a1a/10FF80?text=Sao+Paulo+Yellow+[Custom+Asset]",
+        "green": "https://via.placeholder.com/800x500/1a1a1a/10FF80?text=Isle+of+Man+Green+[Custom+Asset]",
+        "blue": "https://via.placeholder.com/800x500/1a1a1a/10FF80?text=Portimao+Blue+[Custom+Asset]",
+        "white": "https://via.placeholder.com/800x500/1a1a1a/10FF80?text=Alpine+White+[Custom+Asset]",
+        "black": "https://via.placeholder.com/800x500/1a1a1a/10FF80?text=Black+Sapphire+[Custom+Asset]",
+        "grey": "https://via.placeholder.com/800x500/1a1a1a/10FF80?text=Dravit+Grey+[Custom+Asset]",
+        "gray": "https://via.placeholder.com/800x500/1a1a1a/10FF80?text=Dravit+Grey+[Custom+Asset]",
+        "red": "https://via.placeholder.com/800x500/1a1a1a/10FF80?text=Toronto+Red+[Custom+Asset]",
+        "frozen": "https://via.placeholder.com/800x500/1a1a1a/10FF80?text=Frozen+Matte+[Custom+Asset]"
+    };
+
     fetch('data.json?t=' + new Date().getTime())
         .then(response => response.json())
         .then(data => {
@@ -167,14 +180,17 @@
             gallery.innerHTML = ''; 
 
             data.vehicles.forEach(car => {
-                let safeImageUrl = car.image;
-                
-                if (safeImageUrl.includes('placeholder.com') || !safeImageUrl) {
-                    safeImageUrl = fallbackImage;
-                } else if (safeImageUrl.startsWith('//')) {
-                    safeImageUrl = 'https:' + safeImageUrl;
+                // THE COLOR MAPPING ENGINE
+                let safeImageUrl = fallbackImage; 
+                const dealerColorString = car.color.toLowerCase();
+
+                // Scan the dealer's color text against our dictionary keywords
+                for (const [colorKeyword, customUrl] of Object.entries(colorAssets)) {
+                    if (dealerColorString.includes(colorKeyword)) {
+                        safeImageUrl = customUrl;
+                        break; // Stop looking once we find a match
+                    }
                 }
-                // Proxy intentionally removed here!
 
                 const card = `
                     <div class="alt-card">
