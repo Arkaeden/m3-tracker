@@ -1,5 +1,5 @@
 {
-    "timestamp": "2026-05-13 23:08:57 PDT",
+    "timestamp": "2026-05-13 23:27:32 PDT",
     "vehicles": [
         {
             "vin": "WBS13HJ07VFW72370",
@@ -11,7 +11,7 @@
             "status": "On Lot",
             "image": "https://via.placeholder.com/600x400?text=Image+Unavailable",
             "link": "https://www.eastbaybmw.com/new/WBS13HJ07VFW72370.htm",
-            "is_new": true
+            "is_new": false
         },
         {
             "vin": "WBS23HJ04VFW72234",
@@ -23,7 +23,7 @@
             "status": "On Lot",
             "image": "https://via.placeholder.com/600x400?text=Image+Unavailable",
             "link": "https://www.eastbaybmw.com/new/WBS23HJ04VFW72234.htm",
-            "is_new": true
+            "is_new": false
         },
         {
             "vin": "WBS13HJ05TFW44032",
@@ -35,7 +35,7 @@
             "status": "On Lot",
             "image": "https://via.placeholder.com/600x400?text=Image+Unavailable",
             "link": "https://www.stevenscreekbmw.com/new/WBS13HJ05TFW44032.htm",
-            "is_new": true
+            "is_new": false
         },
         {
             "vin": "WBS23HJ07VFW68579",
@@ -47,7 +47,7 @@
             "status": "On Lot",
             "image": "https://via.placeholder.com/600x400?text=Image+Unavailable",
             "link": "https://www.stevenscreekbmw.com/new/WBS23HJ07VFW68579.htm",
-            "is_new": true
+            "is_new": false
         },
         {
             "vin": "WBS33HJ04TFW12875",
@@ -59,7 +59,7 @@
             "status": "On Lot",
             "image": "https://via.placeholder.com/600x400?text=Image+Unavailable",
             "link": "https://www.bmwofmountainview.com/new/WBS33HJ04TFW12875.htm",
-            "is_new": true
+            "is_new": false
         },
         {
             "vin": "WBS23HJ05TFW36100",
@@ -71,7 +71,7 @@
             "status": "On Lot",
             "image": "https://via.placeholder.com/600x400?text=Image+Unavailable",
             "link": "https://www.bmwofmountainview.com/new/WBS23HJ05TFW36100.htm",
-            "is_new": true
+            "is_new": false
         },
         {
             "vin": "WBS13HJ03VFW73628",
@@ -83,7 +83,7 @@
             "status": "On Lot",
             "image": "https://via.placeholder.com/600x400?text=Image+Unavailable",
             "link": "https://www.bmwofmountainview.com/new/WBS13HJ03VFW73628.htm",
-            "is_new": true
+            "is_new": false
         },
         {
             "vin": "WBS23HJ01VFW96796",
@@ -95,7 +95,7 @@
             "status": "On Lot",
             "image": "https://via.placeholder.com/600x400?text=Image+Unavailable",
             "link": "https://www.bmwofmountainview.com/new/WBS23HJ01VFW96796.htm",
-            "is_new": true
+            "is_new": false
         },
         {
             "vin": "WBS33HJ04VFX04815",
@@ -107,7 +107,7 @@
             "status": "On Lot",
             "image": "https://via.placeholder.com/600x400?text=Image+Unavailable",
             "link": "https://www.bmwofmountainview.com/new/WBS33HJ04VFX04815.htm",
-            "is_new": true
+            "is_new": false
         },
         {
             "vin": "WBS33HJ06VFW83353",
@@ -119,7 +119,7 @@
             "status": "On Lot",
             "image": "https://via.placeholder.com/600x400?text=Image+Unavailable",
             "link": "https://www.bmwofmountainview.com/new/WBS33HJ06VFW83353.htm",
-            "is_new": true
+            "is_new": false
         }
     ]
 }
