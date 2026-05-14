@@ -1,5 +1,5 @@
 {
-    "timestamp": "2026-05-14 14:12:55 PDT",
+    "timestamp": "2026-05-14 19:05:59 PDT",
     "vehicles": [
         {
             "vin": "WBS13HJ07VFW72370",
@@ -9,9 +9,21 @@
             "color": "Portimao Blue Metallic",
             "dealer": "East Bay BMW",
             "status": "On Lot",
-            "image": "https://via.placeholder.com/600x400?text=Image+Unavailable",
+            "image": "PENDING",
             "link": "https://www.eastbaybmw.com/new/WBS13HJ07VFW72370.htm",
-            "is_new": false
+            "is_new": true
+        },
+        {
+            "vin": "WBS23HK02VCY23278",
+            "year": 2027,
+            "model": "M4 Competition",
+            "price": "$$91,793",
+            "color": "Brooklyn Grey Metallic",
+            "dealer": "East Bay BMW",
+            "status": "On Lot",
+            "image": "PENDING",
+            "link": "https://www.eastbaybmw.com/new/WBS23HK02VCY23278.htm",
+            "is_new": true
         },
         {
             "vin": "WBS23HJ04VFW72234",
@@ -21,33 +33,45 @@
             "color": "Skyscraper Grey Metallic",
             "dealer": "East Bay BMW",
             "status": "On Lot",
-            "image": "https://via.placeholder.com/600x400?text=Image+Unavailable",
+            "image": "PENDING",
             "link": "https://www.eastbaybmw.com/new/WBS23HJ04VFW72234.htm",
-            "is_new": false
+            "is_new": true
         },
         {
-            "vin": "WBS13HJ05TFW44032",
-            "year": 2026,
-            "model": "M3",
-            "price": "$82925.0",
-            "color": "Alpine White",
-            "dealer": "Stevens Creek BMW",
-            "status": "On Lot",
-            "image": "https://via.placeholder.com/600x400?text=Image+Unavailable",
-            "link": "https://www.stevenscreekbmw.com/new/WBS13HJ05TFW44032.htm",
-            "is_new": false
-        },
-        {
-            "vin": "WBS23HJ07VFW68579",
+            "vin": "WBS33HK06VCY31114",
             "year": 2027,
-            "model": "M3",
-            "price": "$Call",
-            "color": "Black Sapphire Metallic",
-            "dealer": "Stevens Creek BMW",
+            "model": "M4 Competition",
+            "price": "$$98,648",
+            "color": "Dravit Grey Metallic",
+            "dealer": "East Bay BMW",
             "status": "On Lot",
-            "image": "https://via.placeholder.com/600x400?text=Image+Unavailable",
-            "link": "https://www.stevenscreekbmw.com/new/WBS23HJ07VFW68579.htm",
-            "is_new": false
+            "image": "PENDING",
+            "link": "https://www.eastbaybmw.com/new/WBS33HK06VCY31114.htm",
+            "is_new": true
+        },
+        {
+            "vin": "WBS33HK06VCY32361",
+            "year": 2027,
+            "model": "M4 Competition",
+            "price": "$$99,883",
+            "color": "Dravit Grey Metallic",
+            "dealer": "East Bay BMW",
+            "status": "On Lot",
+            "image": "PENDING",
+            "link": "https://www.eastbaybmw.com/new/WBS33HK06VCY32361.htm",
+            "is_new": true
+        },
+        {
+            "vin": "WBS13HK05TCW78715",
+            "year": 2026,
+            "model": "M4",
+            "price": "$$86,710",
+            "color": "Alpine White",
+            "dealer": "BMW of Mountain View",
+            "status": "On Lot",
+            "image": "PENDING",
+            "link": "https://www.bmwofmountainview.com/new/WBS13HK05TCW78715.htm",
+            "is_new": true
         },
         {
             "vin": "WBS33HJ04TFW12875",
@@ -57,9 +81,21 @@
             "color": "Sao Paulo Yellow",
             "dealer": "BMW of Mountain View",
             "status": "On Lot",
-            "image": "https://via.placeholder.com/600x400?text=Image+Unavailable",
+            "image": "PENDING",
             "link": "https://www.bmwofmountainview.com/new/WBS33HJ04TFW12875.htm",
-            "is_new": false
+            "is_new": true
+        },
+        {
+            "vin": "WBS33HK00TCX31068",
+            "year": 2026,
+            "model": "M4 Competition",
+            "price": "$$100,305",
+            "color": "Sao Paulo Yellow",
+            "dealer": "BMW of Mountain View",
+            "status": "On Lot",
+            "image": "PENDING",
+            "link": "https://www.bmwofmountainview.com/new/WBS33HK00TCX31068.htm",
+            "is_new": true
         },
         {
             "vin": "WBS23HJ05TFW36100",
@@ -69,9 +105,33 @@
             "color": "Dravit Gray",
             "dealer": "BMW of Mountain View",
             "status": "On Lot",
-            "image": "https://via.placeholder.com/600x400?text=Image+Unavailable",
+            "image": "PENDING",
             "link": "https://www.bmwofmountainview.com/new/WBS23HJ05TFW36100.htm",
-            "is_new": false
+            "is_new": true
+        },
+        {
+            "vin": "WBS33HK06TCX28305",
+            "year": 2026,
+            "model": "M4 Competition",
+            "price": "$$104,450",
+            "color": "Special Order Color",
+            "dealer": "BMW of Mountain View",
+            "status": "On Lot",
+            "image": "PENDING",
+            "link": "https://www.bmwofmountainview.com/new/WBS33HK06TCX28305.htm",
+            "is_new": true
+        },
+        {
+            "vin": "WBS43BA02TCX59294",
+            "year": 2026,
+            "model": "M4 Competition",
+            "price": "$$108,655",
+            "color": "Aventurin Red",
+            "dealer": "BMW of Mountain View",
+            "status": "On Lot",
+            "image": "PENDING",
+            "link": "https://www.bmwofmountainview.com/new/WBS43BA02TCX59294.htm",
+            "is_new": true
         },
         {
             "vin": "WBS13HJ03VFW73628",
@@ -81,9 +141,9 @@
             "color": "Portimao Blue Metallic",
             "dealer": "BMW of Mountain View",
             "status": "On Lot",
-            "image": "https://via.placeholder.com/600x400?text=Image+Unavailable",
+            "image": "PENDING",
             "link": "https://www.bmwofmountainview.com/new/WBS13HJ03VFW73628.htm",
-            "is_new": false
+            "is_new": true
         },
         {
             "vin": "WBS23HJ01VFW96796",
@@ -93,9 +153,9 @@
             "color": "Isle Of Man Green Metallic",
             "dealer": "BMW of Mountain View",
             "status": "On Lot",
-            "image": "https://via.placeholder.com/600x400?text=Image+Unavailable",
+            "image": "PENDING",
             "link": "https://www.bmwofmountainview.com/new/WBS23HJ01VFW96796.htm",
-            "is_new": false
+            "is_new": true
         },
         {
             "vin": "WBS33HJ04VFX04815",
@@ -105,9 +165,9 @@
             "color": "Dravit Grey Metallic",
             "dealer": "BMW of Mountain View",
             "status": "On Lot",
-            "image": "https://via.placeholder.com/600x400?text=Image+Unavailable",
+            "image": "PENDING",
             "link": "https://www.bmwofmountainview.com/new/WBS33HJ04VFX04815.htm",
-            "is_new": false
+            "is_new": true
         },
         {
             "vin": "WBS33HJ06VFW83353",
@@ -117,9 +177,21 @@
             "color": "Aventurin Red Metallic",
             "dealer": "BMW of Mountain View",
             "status": "On Lot",
-            "image": "https://via.placeholder.com/600x400?text=Image+Unavailable",
+            "image": "PENDING",
             "link": "https://www.bmwofmountainview.com/new/WBS33HJ06VFW83353.htm",
-            "is_new": false
+            "is_new": true
+        },
+        {
+            "vin": "WBS43BA05VCY43161",
+            "year": 2027,
+            "model": "M4",
+            "price": "$$108,785",
+            "color": "Portimao Blue Metallic",
+            "dealer": "BMW of Mountain View",
+            "status": "On Lot",
+            "image": "PENDING",
+            "link": "https://www.bmwofmountainview.com/new/WBS43BA05VCY43161.htm",
+            "is_new": true
         }
     ]
 }
