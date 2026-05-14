@@ -4,22 +4,133 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>M-SERIES // ALLOCATION TRACKER</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --card-bg: #111111;
+            --text-main: #ffffff;
+            --text-dim: #666666;
+            --accent: #ffffff;
+            --border: #222222;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; }
+
+        header {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        h1 { font-weight: 900; font-size: 1.2rem; margin: 0; }
+        #last-updated { color: var(--text-dim); font-size: 0.7rem; }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2px;
+            background-color: var(--border);
+            border: 1px solid var(--border);
+        }
+
+        .card {
+            background-color: var(--bg);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .img-box {
+            position: relative;
+            background-color: var(--card-bg);
+            aspect-ratio: 3/2;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--accent);
+            color: var(--bg);
+            padding: 4px 8px;
+            font-size: 10px;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .title-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .model-name { font-weight: 800; font-size: 1.1rem; }
+        .price { font-weight: 400; color: var(--text-dim); }
+
+        .telemetry {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            font-size: 10px;
+            margin-bottom: 24px;
+        }
+
+        .telemetry div { color: var(--text-dim); }
+        .telemetry span { color: var(--text-main); display: block; margin-top: 2px; }
+
+        .btn {
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 12px;
+            text-align: center;
+            font-size: 10px;
+            transition: all 0.2s;
+        }
+
+        .btn:hover { background: var(--text-main); color: var(--bg); }
+
+        @media (max-width: 600px) {
+            .gallery-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
     <div class="container">
         <header>
-            <h1>M-SERIES // <span id="last-updated">INITIALIZING...</span></h1>
+            <h1>M-SERIES // ALLOCATIONS</h1>
+            <div id="last-updated">SYNCING...</div>
         </header>
 
         <div id="gallery" class="gallery-grid">
-            <div class="loading">CONNECTING TO DEALER API...</div>
+            <!-- Data Injected Here -->
         </div>
     </div>
 
     <script>
-        const fallbackImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%23121212'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='12' fill='%23555555' letter-spacing='4'%3EIMAGE PENDING%3C/text%3E%3C/svg%3E";
+        const fallbackImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%23111111'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='10' fill='%23333333'%3EIMG_PENDING%3C/text%3E%3C/svg%3E";
 
         const assetLibrary = {
             "M3": {
@@ -37,7 +148,6 @@
                 "frozen brilliant": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_frozen_white.png",
                 "frozen portimao": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_frozen_blue.png",
                 "frozen pure": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_frozen_grey.png",
-                "frozen": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_frozen_white.png",
                 "individual": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_frozen_white.png",
                 "special order": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_frozen_white.png"
             },
@@ -56,67 +166,51 @@
                 "frozen brilliant": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M4_frozen_white.png",
                 "frozen portimao": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M4_frozen_blue.png",
                 "frozen pure": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M4_frozen_grey.png",
-                "frozen": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M4_frozen_white.png",
                 "individual": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M4_frozen_white.png",
                 "special order": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M4_frozen_white.png"
             }
         };
 
         fetch('data.json?t=' + new Date().getTime())
-            .then(response => response.json())
+            .then(res => res.json())
             .then(data => {
-                document.getElementById('last-updated').innerText = `SYS.UPDATE: ${data.timestamp}`;
+                document.getElementById('last-updated').innerText = `SYS.UPDATE // ${data.timestamp}`;
                 const gallery = document.getElementById('gallery');
-                
-                if (!data.vehicles || data.vehicles.length === 0) {
-                    gallery.innerHTML = '<div style="grid-column: 1 / -1; color: var(--gray-dim);">0 ALLOCATIONS DETECTED.</div>';
-                    return;
-                }
-                
-                gallery.innerHTML = ''; 
+                gallery.innerHTML = '';
 
                 data.vehicles.forEach(car => {
-                    let safeImageUrl = fallbackImage; 
-                    const dealerColorString = car.color.toLowerCase();
+                    let img = fallbackImage;
+                    const color = car.color.toLowerCase();
+                    const model = car.model.includes('M4') ? 'M4' : 'M3';
                     
-                    const modelKey = car.model.includes('M4') ? 'M4' : 'M3';
-                    const currentLibrary = assetLibrary[modelKey];
-                    const sortedKeywords = Object.keys(currentLibrary).sort((a, b) => b.length - a.length);
-
-                    for (const keyword of sortedKeywords) {
-                        if (dealerColorString.includes(keyword) || 
-                           (keyword.includes('grey') && dealerColorString.includes(keyword.replace('grey', 'gray')))) {
-                            safeImageUrl = currentLibrary[keyword];
-                            break; 
+                    const keys = Object.keys(assetLibrary[model]).sort((a,b) => b.length - a.length);
+                    for (const k of keys) {
+                        if (color.includes(k) || (k.includes('grey') && color.includes(k.replace('grey', 'gray')))) {
+                            img = assetLibrary[model][k];
+                            break;
                         }
                     }
 
                     gallery.innerHTML += `
-                        <div class="alt-card">
-                            <div class="alt-img-box">
-                                ${car.is_new ? '<div class="match-badge">// NEW ALLOCATION</div>' : ''}
-                                <img src="${safeImageUrl}" onerror="this.onerror=null; this.src='${fallbackImage}';" alt="${car.model}">
+                        <div class="card">
+                            <div class="img-box">
+                                ${car.is_new ? '<div class="badge">NEW ALLOCATION</div>' : ''}
+                                <img src="${img}" alt="${car.model}">
                             </div>
-                            <div class="alt-details">
-                                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 8px;">
-                                    <div class="alt-title">${car.year} ${car.model}</div>
-                                    <div class="match-price">${car.price}</div>
-                                </div>
-                                <div class="telemetry-grid">
-                                    <div>ID // <span>${car.vin.slice(-6)}</span></div>
-                                    <div>CLR // <span>${car.color}</span></div>
-                                    <div>LOC // <span>${car.dealer}</span></div>
-                                    <div>STS // <span>${car.status}</span></div>
-                                </div>
-                                <a href="${car.link}" target="_blank" class="btn-ghost">INITIALIZE LINK [→]</a>
+                            <div class="title-row">
+                                <div class="model-name">${car.year} ${car.model}</div>
+                                <div class="price">${car.price}</div>
                             </div>
+                            <div class="telemetry">
+                                <div>VIN // <span>${car.vin.slice(-6)}</span></div>
+                                <div>CLR // <span>${car.color}</span></div>
+                                <div>LOC // <span>${car.dealer}</span></div>
+                                <div>STS // <span>${car.status}</span></div>
+                            </div>
+                            <a href="${car.link}" target="_blank" class="btn">INITIALIZE LINK [→]</a>
                         </div>
                     `;
                 });
-            })
-            .catch(err => {
-                console.error(err);
-                document.getElementById('gallery').innerHTML = '<div style="color: red; padding: 20px;">ERROR LOADING DATA. CHECK CONSOLE.</div>';
             });
     </script>
 </body>
