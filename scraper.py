@@ -3,7 +3,7 @@ from curl_cffi import requests
 from datetime import datetime
 import os
 
-# SONIC AUTOMOTIVE GROUP (Verified Working)
+# THE BAY AREA SQUADRON (SONIC GROUP)
 SONIC_DEALERS = [
     {"name": "East Bay BMW", "url": "https://www.eastbaybmw.com/apis/widget/INVENTORY_LISTING_DEFAULT_AUTO_NEW:inventory-data-bus1/getInventory?make=BMW&model=M3,M4"},
     {"name": "Weatherford BMW", "url": "https://www.weatherfordbmw.com/apis/widget/INVENTORY_LISTING_DEFAULT_AUTO_NEW:inventory-data-bus1/getInventory?make=BMW&model=M3,M4"},
@@ -18,9 +18,9 @@ def fetch_inventory():
     found_vins = {}
     
     with requests.Session() as s:
-        # 1. SCAN SONIC SQUADRON
+        # 1. SCAN SONIC DEALERS
         for dealer in SONIC_DEALERS:
-            print(f"--- SCANNING: {dealer['name']} ---")
+            count = 0
             try:
                 response = s.get(dealer['url'], impersonate="chrome124", timeout=25)
                 if response.status_code == 200:
@@ -42,33 +42,36 @@ def fetch_inventory():
                                 "status": "In Transit" if car.get('inTransit') else "On Lot",
                                 "link": f"https://www.{dealer['name'].replace(' ', '').lower()}.com/new/{vin}.htm"
                             }
-            except Exception as e: print(f"Error at {dealer['name']}: {e}")
+                            count += 1
+                print(f"--- SCANNING: {dealer['name']} [{count} UNITS] ---")
+            except Exception as e: print(f" [!] Error at {dealer['name']}: {e}")
 
-        # 2. SCAN THE CORPORATE TUNNEL (SF & SHADOW SCAN)
+        # 2. SCAN THE CORPORATE ORACLE (SF & SHADOW SCAN)
         print(f"--- SCANNING: BMW USA CORPORATE ORACLE (SF ZIP 94103) ---")
         try:
-            # We hit the national inventory API using a 50-mile radius from SF
-            oracle_url = "https://www.bmwusa.com/inventory/api/v1/search"
-            params = {
+            # We hit the inventory-specific subdomain with a POST request
+            oracle_url = "https://inventory.bmwusa.com/InventoryServer/v3/inventory/search"
+            payload = {
                 "zipCode": "94103",
                 "radius": 50,
                 "size": 100,
-                "models": ["M3", "M4"],
-                "type": "NEW"
+                "models": ["M3", "M4"]
             }
-            # Mandatory headers to look like the My BMW App
             headers = {
-                "Referer": "https://www.bmwusa.com/inventory.html",
-                "Accept": "application/json"
+                "Content-Type": "application/json",
+                "Referer": "https://www.bmwusa.com/",
+                "Origin": "https://www.bmwusa.com"
             }
-            r = s.get(oracle_url, params=params, headers=headers, impersonate="chrome124", timeout=30)
+            
+            # Using POST as the Oracle expects a JSON payload
+            r = s.post(oracle_url, json=payload, headers=headers, impersonate="chrome124", timeout=30)
             
             if r.status_code == 200:
                 oracle_data = r.json()
                 listings = oracle_data.get('results', [])
+                oracle_count = 0
                 for car in listings:
                     vin = car.get('vin')
-                    # If this VIN hasn't been found by the Sonic scraper, it's a "Shadow" car (like SF)
                     if vin and vin not in found_vins:
                         dealer_name = car.get('dealerName', 'BMW Center')
                         model_label = car.get('modelName', '').upper()
@@ -85,9 +88,10 @@ def fetch_inventory():
                             "status": "On Lot" if car.get('availability') == "IN_STOCK" else "Arriving Soon",
                             "link": f"https://www.bmwusa.com/inventory.html#!/view/{vin}"
                         }
-                        print(f" [✓] Oracle Found: {type_tag} at {dealer_name}")
+                        oracle_count += 1
+                print(f" [✓] Oracle Found {oracle_count} additional units (SF/Shadow).")
             else:
-                print(f" [!] Oracle Blocked (Code: {r.status_code}).")
+                print(f" [!] Oracle Blocked. Code: {r.status_code}")
         except Exception as e:
             print(f" [!] Oracle Logic Error: {e}")
 
