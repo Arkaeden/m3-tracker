@@ -186,7 +186,7 @@
             "frozen brilliant": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M4_frozen_white.png",
             "frozen portimao": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M4_frozen_blue.png",
             "frozen pure": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M4_frozen_grey.png",
-            "frozen": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M4_frozen_white.png", // Added comma here
+            "frozen": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M4_frozen_white.png",
             "special order": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M4_frozen_blue.png"
         }
     };
@@ -206,7 +206,6 @@
                 let safeImageUrl = fallbackImage; 
                 const dealerColor = car.color.toLowerCase();
                 
-                // Route to M3 or M4 sub-library
                 const modelKey = car.model.includes('M4') ? 'M4' : 'M3';
                 const currentLibrary = assetLibrary[modelKey];
 
@@ -219,6 +218,10 @@
                     }
                 }
 
+                // PRICE SANITIZATION LOGIC
+                const cleanPrice = car.price.replace(/\$/g, '');
+                const displayPrice = cleanPrice === "Call" ? "Call" : `$${cleanPrice}`;
+
                 gallery.innerHTML += `
                     <div class="alt-card">
                         <div class="alt-img-box">
@@ -228,7 +231,7 @@
                         <div class="alt-details">
                             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 8px;">
                                 <div class="alt-title">${car.year} ${car.model}</div>
-                                <div class="match-price">${car.price}</div>
+                                <div class="match-price">${displayPrice}</div>
                             </div>
                             <div class="telemetry-grid">
                                 <div>ID // <span>${car.vin.slice(-6)}</span></div>
