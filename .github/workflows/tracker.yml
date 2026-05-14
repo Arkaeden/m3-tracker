@@ -1,18 +1,15 @@
 name: M3 Engine Restart
 
 on:
+  workflow_dispatch: # Allows you to run it manually
   schedule:
-    - cron: '0 */6 * * *' 
-  workflow_dispatch: 
+    - cron: '0 */6 * * *' # Runs automatically every 6 hours
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      
     steps:
-      - name: Checkout Repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -21,19 +18,16 @@ jobs:
           python-version: '3.10'
 
       - name: Install Requirements
-        run: pip install requests cloudscraper
+        run: |
+          pip install curl_cffi
 
       - name: Run Scraper Engine
         run: python scraper.py
 
-      - name: Save New Data to Gallery
+      - name: Commit and Push changes
         run: |
-          git config --global user.name 'M3 Scraper Bot'
-          git config --global user.email 'bot@m3tracker.local'
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add data.json
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "Automated inventory update"
-            git push
-          fi
+          git commit -m "Automated inventory update [$(date)]" || exit 0
+          git push
