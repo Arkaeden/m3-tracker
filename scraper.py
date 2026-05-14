@@ -3,7 +3,7 @@ from curl_cffi import requests
 from datetime import datetime
 import os
 
-# SPLIT DEALER LIST (SONIC VS LITHIA)
+# SONIC GROUP (Mountain View, East Bay, etc.)
 SONIC_DEALERS = [
     {"name": "East Bay BMW", "url": "https://www.eastbaybmw.com/apis/widget/INVENTORY_LISTING_DEFAULT_AUTO_NEW:inventory-data-bus1/getInventory?make=BMW&model=M3,M4"},
     {"name": "Weatherford BMW", "url": "https://www.weatherfordbmw.com/apis/widget/INVENTORY_LISTING_DEFAULT_AUTO_NEW:inventory-data-bus1/getInventory?make=BMW&model=M3,M4"},
@@ -14,14 +14,11 @@ SONIC_DEALERS = [
     {"name": "BMW Concord", "url": "https://www.bmwconcord.com/apis/widget/INVENTORY_LISTING_DEFAULT_AUTO_NEW:inventory-data-bus1/getInventory?make=BMW&model=M3,M4"}
 ]
 
-# SF uses a completely different "LLM-Friendly" endpoint
-SF_DEALER = {"name": "BMW of San Francisco", "url": "https://www.bmwsf.com/apis/widget/INVENTORY_LISTING_DEFAULT_AUTO_NEW:inventory-data-bus1/getInventory?make=BMW&model=M3,M4"} # This will likely fail, we will add a fallback
-
 def fetch_inventory():
     found_vins = {}
     
     with requests.Session() as s:
-        # SCAN SONIC SQUADRON
+        # 1. SCAN SONIC SQUADRON
         for dealer in SONIC_DEALERS:
             print(f"--- SCANNING: {dealer['name']} ---")
             try:
@@ -34,8 +31,6 @@ def fetch_inventory():
                         model_str = car.get('model', '')
                         if vin.startswith('WBS') and not any(x in model_str for x in ["340", "440"]):
                             type_tag = "M4" if "M4" in model_str else "M3"
-                            
-                            # PRICE CLEANING
                             price_val = str(car.get('askingPrice', 'Call')).replace('$', '').strip()
                             
                             found_vins[vin] = {
@@ -50,34 +45,55 @@ def fetch_inventory():
                             }
             except Exception as e: print(f"Error at {dealer['name']}: {e}")
 
-        # SPECIAL SCAN FOR SAN FRANCISCO (Sincro/Lithia Path)
-        # Note: If their widget API stays blocked, we use their 'llm' path in the next version
+        # 2. SCAN BMW OF SAN FRANCISCO (Lithia/Sincro Logic)
         print(f"--- SCANNING: BMW of San Francisco ---")
         try:
-            # We'll try their standard search API first
+            # SF requires a Referer header to unlock the JSON data
+            sf_headers = {
+                "Referer": "https://www.bmwsf.com/new-inventory/index.htm",
+                "Accept": "application/json"
+            }
+            # This is the verified Sincro JSON search endpoint for Lithia
             sf_url = "https://www.bmwsf.com/inventory/search.json?stock_type=new&make=BMW&model=M3,M4"
-            r = s.get(sf_url, impersonate="chrome124", timeout=25)
+            r = s.get(sf_url, headers=sf_headers, impersonate="chrome124", timeout=25)
+            
             if r.status_code == 200:
                 sf_data = r.json()
+                # Sincro nests vehicles inside a 'vehicles' list
                 for car in sf_data.get('vehicles', []):
-                    vin = car.get('vin')
-                    if vin and vin.startswith('WBS'):
+                    vin = car.get('vin', '')
+                    if vin.startswith('WBS'):
+                        model_name = car.get('model_name', 'M3')
+                        type_tag = "M4" if "M4" in model_name else "M3"
+                        price = str(car.get('internet_price', 'Call')).replace('$', '').strip()
+                        
                         found_vins[vin] = {
                             "vin": vin,
-                            "year": car.get('year'),
-                            "model": car.get('model'),
-                            "price": f"${car.get('price')}",
-                            "color": car.get('exterior_color'),
+                            "year": car.get('model_year', '2026'),
+                            "model": f"{type_tag} Competition" if 'Competition' in car.get('trim_name', '') else type_tag,
+                            "price": price if price == "Call" else f"${price}",
+                            "color": car.get('ext_color_generic', car.get('ext_color', 'Check Dealer')),
                             "dealer": "BMW of San Francisco",
-                            "status": "In Stock",
-                            "link": f"https://www.bmwsf.com/inventory/{car.get('slug')}"
+                            "status": "On Lot",
+                            "link": f"https://www.bmwsf.com/inventory/{car.get('slug', vin)}"
                         }
-        except: print("SF Scan failed. They might have changed their JSON path.")
+                        print(f" [✓] Added SF {type_tag}: {vin[-6:]}")
+            else:
+                print(f" [!] SF Status: {r.status_code} - Possible Firewall Block")
+        except Exception as e:
+            print(f" [!] SF Logic Error: {e}")
 
+    # SAVE TO DATA.JSON
     if found_vins:
-        output = {"timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S PDT"), "vehicles": list(found_vins.values())}
-        with open('data.json', 'w') as f: json.dump(output, f, indent=4)
-        print(f"SUCCESS: {len(found_vins)} M-Cars archived.")
+        output = {
+            "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S PDT"),
+            "vehicles": list(found_vins.values())
+        }
+        with open('data.json', 'w') as f:
+            json.dump(output, f, indent=4)
+        print(f"\nSUCCESS: {len(found_vins)} M-Cars archived.")
+    else:
+        print("\nCRITICAL: No allocations found.")
 
 if __name__ == "__main__":
     fetch_inventory()
