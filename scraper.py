@@ -44,44 +44,45 @@ def fetch_inventory():
                             }
             except Exception as e: print(f"Error at {dealer['name']}: {e}")
 
-        # 2. SCAN BMW OF SAN FRANCISCO (WITH PROXY FALLBACK)
+        # 2. SCAN BMW OF SAN FRANCISCO (MODERN PROXY)
         print(f"--- SCANNING: BMW of San Francisco ---")
-        sf_success = False
         try:
-            # TRY DIRECT AI PORTAL FIRST
-            sf_url = "https://www.bmwsf.com/llm/inventory/"
-            r = s.get(sf_url, impersonate="chrome124", timeout=15)
+            # Cars.com Dealer ID for SF is 5394476
+            proxy_url = "https://www.cars.com/shopping/results/?dealer_id=5394476&make_slugs[]=bmw&model_slugs[]=bmw-m3&model_slugs[]=bmw-m4&stock_type=new"
+            pr = s.get(proxy_url, impersonate="chrome124", timeout=25)
             
-            if r.status_code == 200:
-                # Direct match logic...
-                sf_success = True
-            elif r.status_code == 403:
-                print(" [!] SF Direct Blocked (403). Pivoting to Proxy Scan...")
-                # FALLBACK: Scan the SF Dealer Feed on Cars.com (Dealer ID: 5394476)
-                proxy_url = "https://www.cars.com/shopping/results/?dealer_id=5394476&make_slugs[]=bmw&model_slugs[]=bmw-m3&model_slugs[]=bmw-m4&stock_type=new"
-                pr = s.get(proxy_url, impersonate="chrome124", timeout=20)
-                
-                if pr.status_code == 200:
-                    # Look for the hidden JSON payload in the Cars.com page
-                    json_blob = re.search(r'window\.SEARCH_RESULTS\s*=\s*({.*?});', pr.text)
-                    if json_blob:
-                        search_data = json.loads(json_blob.group(1))
-                        for car in search_data.get('results', []):
-                            vin = car.get('vin')
-                            if vin and vin.startswith('WBS'):
-                                type_tag = "M4" if "m4" in car.get('model_label', '').lower() else "M3"
-                                found_vins[vin] = {
-                                    "vin": vin,
-                                    "year": car.get('year', '2026'),
-                                    "model": f"{type_tag} Competition" if 'Competition' in car.get('trim_label', '') else type_tag,
-                                    "price": f"${car.get('price', 'Call')}",
-                                    "color": car.get('exterior_color_label', 'Check Dealer'),
-                                    "dealer": "BMW of San Francisco",
-                                    "status": "On Lot",
-                                    "link": f"https://www.cars.com/vehicledetail/{car.get('id')}/"
-                                }
-                                print(f" [✓] Added SF (via Proxy) {type_tag}: {vin[-6:]}")
-                        sf_success = True
+            if pr.status_code == 200:
+                # Target the Next.js data block
+                json_blob = re.search(r'<script id="__NEXT_DATA__" type="application/json">(.*?)</script>', pr.text)
+                if json_blob:
+                    raw_data = json.loads(json_blob.group(1))
+                    # Navigate the deep nested structure of Cars.com
+                    listings = raw_data.get('props', {}).get('pageProps', {}).get('initialState', {}).get('inventory', {}).get('results', [])
+                    
+                    for car in listings:
+                        vin = car.get('vin')
+                        if vin and vin.startswith('WBS'):
+                            model_label = car.get('model_label', '').upper()
+                            type_tag = "M4" if "M4" in model_label else "M3"
+                            
+                            # Clean the price (remove $, commas, and whitespace)
+                            raw_price = str(car.get('price', 'Call')).replace('$', '').replace(',', '').strip()
+                            
+                            found_vins[vin] = {
+                                "vin": vin,
+                                "year": car.get('year', '2026'),
+                                "model": f"{type_tag} Competition" if 'COMPETITION' in car.get('trim_label', '').upper() else type_tag,
+                                "price": f"${raw_price}" if raw_price.isdigit() else "Call",
+                                "color": car.get('exterior_color_label', 'Check Dealer'),
+                                "dealer": "BMW of San Francisco",
+                                "status": "On Lot",
+                                "link": f"https://www.cars.com/vehicledetail/{car.get('id')}/"
+                            }
+                            print(f" [✓] Added SF (via Proxy) {type_tag}: {vin[-6:]}")
+                else:
+                    print(" [!] SF Proxy Error: Could not find data payload.")
+            else:
+                print(f" [!] SF Proxy Blocked. Status: {pr.status_code}")
         except Exception as e:
             print(f" [!] SF Fallback Failed: {e}")
 
