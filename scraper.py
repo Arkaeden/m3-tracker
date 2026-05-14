@@ -1,7 +1,7 @@
 import json
 from curl_cffi import requests
 from datetime import datetime
-import re
+import os
 
 # SONIC AUTOMOTIVE GROUP (Verified Working)
 SONIC_DEALERS = [
@@ -18,7 +18,7 @@ def fetch_inventory():
     found_vins = {}
     
     with requests.Session() as s:
-        # 1. SCAN SONIC DEALERS
+        # 1. SCAN SONIC SQUADRON
         for dealer in SONIC_DEALERS:
             print(f"--- SCANNING: {dealer['name']} ---")
             try:
@@ -31,7 +31,6 @@ def fetch_inventory():
                         model_str = car.get('model', '')
                         if vin.startswith('WBS') and not any(x in model_str for x in ["340", "440"]):
                             type_tag = "M4" if "M4" in model_str else "M3"
-                            # Aggressive Price Cleaning
                             raw_p = str(car.get('askingPrice', 'Call')).replace('$', '').replace(',', '').strip()
                             found_vins[vin] = {
                                 "vin": vin,
@@ -45,55 +44,61 @@ def fetch_inventory():
                             }
             except Exception as e: print(f"Error at {dealer['name']}: {e}")
 
-        # 2. SCAN BMW OF SAN FRANCISCO (TRUECAR PROXY)
-        print(f"--- SCANNING: BMW of San Francisco (TRUECAR PIVOT) ---")
+        # 2. SCAN BMW USA NATIONAL API (SF & REGIONAL SHADOW SCAN)
+        print(f"--- SCANNING: BMW USA NATIONAL ORACLE (SF ZIP 94103) ---")
         try:
-            # Targeting BMW of SF via TrueCar (Dealer ID 34336)
-            tc_url = "https://www.truecar.com/new-cars-for-sale/listings/bmw/m3/location-san-francisco-ca/?dealer_id=34336"
-            tr = s.get(tc_url, impersonate="chrome124", timeout=25)
+            # This API covers all dealers within 50 miles of SF, bypassing Lithia firewalls
+            oracle_url = "https://inventory.bmwusa.com/InventoryServer/v3/inventory/search"
+            payload = {
+                "zipCode": "94103",
+                "radius": 50,
+                "size": 100,
+                "models": ["M3", "M4"]
+            }
+            # Note: We use a POST request for this specific Oracle API
+            headers = {"Content-Type": "application/json", "Referer": "https://www.bmwusa.com/inventory.html"}
+            r = s.post(oracle_url, json=payload, headers=headers, impersonate="chrome124", timeout=30)
             
-            if tr.status_code == 200:
-                # TrueCar stores everything in a clean JSON block called '__NEXT_DATA__'
-                json_blob = re.search(r'<script id="__NEXT_DATA__" type="application/json">(.*?)</script>', tr.text)
-                if json_blob:
-                    raw_data = json.loads(json_blob.group(1))
-                    listings = raw_data.get('props', {}).get('pageProps', {}).get('listings', [])
-                    
-                    for car in listings:
-                        vin = car.get('vin')
-                        if vin and vin.startswith('WBS'):
-                            model_name = car.get('model', 'M3')
-                            type_tag = "M4" if "M4" in model_name else "M3"
-                            price = str(car.get('pricing', {}).get('msrp', 'Call')).replace('$', '').replace(',', '').strip()
-                            
-                            found_vins[vin] = {
-                                "vin": vin,
-                                "year": car.get('year', '2026'),
-                                "model": f"{type_tag} Competition" if 'Competition' in car.get('trim', '') else type_tag,
-                                "price": f"${price}" if price.isdigit() else "Call",
-                                "color": car.get('exteriorColor', 'Check Dealer'),
-                                "dealer": "BMW of San Francisco",
-                                "status": "On Lot",
-                                "link": f"https://www.bmwsf.com/inventory/new-{car.get('year')}-bmw-{type_tag.lower()}-{vin}/"
-                            }
-                            print(f" [✓] Added SF (via TrueCar) {type_tag}: {vin[-6:]}")
-                else:
-                    print(" [!] SF Pivot Error: JSON Payload Hidden.")
+            if r.status_code == 200:
+                oracle_data = r.json()
+                listings = oracle_data.get('results', [])
+                for car in listings:
+                    vin = car.get('vin')
+                    dealer_name = car.get('dealerName', 'BMW Center')
+                    # We only care about adding cars from BMW of San Francisco (or ones we missed)
+                    if vin not in found_vins:
+                        model_label = car.get('modelName', '').upper()
+                        type_tag = "M4" if "M4" in model_label else "M3"
+                        price = str(car.get('msrp', 'Call')).replace('$', '').replace(',', '').strip()
+                        
+                        found_vins[vin] = {
+                            "vin": vin,
+                            "year": car.get('year', '2026'),
+                            "model": f"{type_tag} Competition" if 'COMPETITION' in car.get('trimName', '').upper() else type_tag,
+                            "price": f"${price}" if price.isdigit() else "Call",
+                            "color": car.get('exteriorColor', 'Check Dealer'),
+                            "dealer": dealer_name,
+                            "status": "In Stock" if car.get('availability') == "IN_STOCK" else "Arriving Soon",
+                            "link": f"https://www.bmwusa.com/inventory.html#!/view/{vin}"
+                        }
+                        if "San Francisco" in dealer_name:
+                            print(f" [✓] Oracle Found SF {type_tag}: {vin[-6:]}")
+                        else:
+                            print(f" [✓] Oracle Found Shadow {type_tag}: {vin[-6:]} at {dealer_name}")
             else:
-                print(f" [!] SF Pivot Blocked. Status: {tr.status_code}")
+                print(f" [!] Oracle Blocked. Code: {r.status_code}")
         except Exception as e:
-            print(f" [!] SF TrueCar Logic Error: {e}")
+            print(f" [!] Oracle Logic Error: {e}")
 
-    # 3. SAVE RESULTS
+    # 3. FINAL ARCHIVE
     if found_vins:
         output = {
             "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S PDT"),
-            "vehicles": len(found_vins),
             "vehicles": list(found_vins.values())
         }
         with open('data.json', 'w') as f:
             json.dump(output, f, indent=4)
-        print(f"\nSUCCESS: {len(found_vins)} M-Cars archived.")
+        print(f"\nSUCCESS: {len(found_vins)} M-Cars archived across the squadron.")
 
 if __name__ == "__main__":
     fetch_inventory()
