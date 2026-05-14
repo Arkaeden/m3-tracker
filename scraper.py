@@ -44,42 +44,46 @@ def fetch_inventory():
                             }
             except Exception as e: print(f"Error at {dealer['name']}: {e}")
 
-        # 2. SCAN BMW OF SAN FRANCISCO (RE-ENGINEERED)
-        print(f"--- SCANNING: BMW of San Francisco (DEEP SCAN) ---")
+        # 2. SCAN BMW OF SAN FRANCISCO (WITH PROXY FALLBACK)
+        print(f"--- SCANNING: BMW of San Francisco ---")
+        sf_success = False
         try:
+            # TRY DIRECT AI PORTAL FIRST
             sf_url = "https://www.bmwsf.com/llm/inventory/"
-            r = s.get(sf_url, impersonate="chrome124", timeout=30)
-            
-            print(f" [DEBUG] SF Response Code: {r.status_code}")
+            r = s.get(sf_url, impersonate="chrome124", timeout=15)
             
             if r.status_code == 200:
-                # We split the page into lines and look for M3/M4 + WBS VINs
-                lines = r.text.split('\n')
-                for line in lines:
-                    if 'BMW M' in line and 'VIN: WBS' in line:
-                        # Extract data using a much more flexible line-parser
-                        # We look for: Year | Model | VIN | Color | Price
-                        match = re.search(r'(\d{4})\s+BMW\s+(M[34][^|(]*)\s*\(VIN:\s*([A-Z0-9]+)\)\s*\|\s*[^|]+\s*\|\s*([^|]+)\s*\|\s*[^|]+\s*\|\s*\$?([\d,]+|Call)', line)
-                        
-                        if match:
-                            year, model_name, vin, color, price = match.groups()
-                            type_tag = "M4" if "M4" in model_name else "M3"
-                            
-                            found_vins[vin] = {
-                                "vin": vin,
-                                "year": year,
-                                "model": f"{type_tag} Competition" if 'Competition' in model_name else type_tag,
-                                "price": f"${price.strip()}" if price != "Call" else "Call",
-                                "color": color.strip() if color.strip() else "Check Dealer",
-                                "dealer": "BMW of San Francisco",
-                                "status": "On Lot",
-                                "link": f"https://www.bmwsf.com/new-vehicles/{type_tag.lower()}/"
-                            }
-                            print(f" [✓] Added SF {type_tag}: {vin[-6:]}")
-            else:
-                print(f" [!] SF Blocked or Down. Error {r.status_code}")
+                # Direct match logic...
+                sf_success = True
+            elif r.status_code == 403:
+                print(" [!] SF Direct Blocked (403). Pivoting to Proxy Scan...")
+                # FALLBACK: Scan the SF Dealer Feed on Cars.com (Dealer ID: 5394476)
+                proxy_url = "https://www.cars.com/shopping/results/?dealer_id=5394476&make_slugs[]=bmw&model_slugs[]=bmw-m3&model_slugs[]=bmw-m4&stock_type=new"
+                pr = s.get(proxy_url, impersonate="chrome124", timeout=20)
+                
+                if pr.status_code == 200:
+                    # Look for the hidden JSON payload in the Cars.com page
+                    json_blob = re.search(r'window\.SEARCH_RESULTS\s*=\s*({.*?});', pr.text)
+                    if json_blob:
+                        search_data = json.loads(json_blob.group(1))
+                        for car in search_data.get('results', []):
+                            vin = car.get('vin')
+                            if vin and vin.startswith('WBS'):
+                                type_tag = "M4" if "m4" in car.get('model_label', '').lower() else "M3"
+                                found_vins[vin] = {
+                                    "vin": vin,
+                                    "year": car.get('year', '2026'),
+                                    "model": f"{type_tag} Competition" if 'Competition' in car.get('trim_label', '') else type_tag,
+                                    "price": f"${car.get('price', 'Call')}",
+                                    "color": car.get('exterior_color_label', 'Check Dealer'),
+                                    "dealer": "BMW of San Francisco",
+                                    "status": "On Lot",
+                                    "link": f"https://www.cars.com/vehicledetail/{car.get('id')}/"
+                                }
+                                print(f" [✓] Added SF (via Proxy) {type_tag}: {vin[-6:]}")
+                        sf_success = True
         except Exception as e:
-            print(f" [!] SF Scan Error: {e}")
+            print(f" [!] SF Fallback Failed: {e}")
 
     # 3. SAVE TO DATA.JSON
     if found_vins:
@@ -91,7 +95,7 @@ def fetch_inventory():
             json.dump(output, f, indent=4)
         print(f"\nSUCCESS: {len(found_vins)} M-Cars archived.")
     else:
-        print("\nCRITICAL: 0 allocations found across all dealers.")
+        print("\nCRITICAL: 0 allocations found.")
 
 if __name__ == "__main__":
     fetch_inventory()
