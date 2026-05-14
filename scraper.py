@@ -44,29 +44,33 @@ def fetch_inventory():
                             }
             except Exception as e: print(f"Error at {dealer['name']}: {e}")
 
-        # 2. SCAN BMW USA NATIONAL API (SF & REGIONAL SHADOW SCAN)
-        print(f"--- SCANNING: BMW USA NATIONAL ORACLE (SF ZIP 94103) ---")
+        # 2. SCAN THE CORPORATE TUNNEL (SF & SHADOW SCAN)
+        print(f"--- SCANNING: BMW USA CORPORATE ORACLE (SF ZIP 94103) ---")
         try:
-            # This API covers all dealers within 50 miles of SF, bypassing Lithia firewalls
-            oracle_url = "https://inventory.bmwusa.com/InventoryServer/v3/inventory/search"
-            payload = {
+            # We hit the national inventory API using a 50-mile radius from SF
+            oracle_url = "https://www.bmwusa.com/inventory/api/v1/search"
+            params = {
                 "zipCode": "94103",
                 "radius": 50,
                 "size": 100,
-                "models": ["M3", "M4"]
+                "models": ["M3", "M4"],
+                "type": "NEW"
             }
-            # Note: We use a POST request for this specific Oracle API
-            headers = {"Content-Type": "application/json", "Referer": "https://www.bmwusa.com/inventory.html"}
-            r = s.post(oracle_url, json=payload, headers=headers, impersonate="chrome124", timeout=30)
+            # Mandatory headers to look like the My BMW App
+            headers = {
+                "Referer": "https://www.bmwusa.com/inventory.html",
+                "Accept": "application/json"
+            }
+            r = s.get(oracle_url, params=params, headers=headers, impersonate="chrome124", timeout=30)
             
             if r.status_code == 200:
                 oracle_data = r.json()
                 listings = oracle_data.get('results', [])
                 for car in listings:
                     vin = car.get('vin')
-                    dealer_name = car.get('dealerName', 'BMW Center')
-                    # We only care about adding cars from BMW of San Francisco (or ones we missed)
-                    if vin not in found_vins:
+                    # If this VIN hasn't been found by the Sonic scraper, it's a "Shadow" car (like SF)
+                    if vin and vin not in found_vins:
+                        dealer_name = car.get('dealerName', 'BMW Center')
                         model_label = car.get('modelName', '').upper()
                         type_tag = "M4" if "M4" in model_label else "M3"
                         price = str(car.get('msrp', 'Call')).replace('$', '').replace(',', '').strip()
@@ -78,19 +82,16 @@ def fetch_inventory():
                             "price": f"${price}" if price.isdigit() else "Call",
                             "color": car.get('exteriorColor', 'Check Dealer'),
                             "dealer": dealer_name,
-                            "status": "In Stock" if car.get('availability') == "IN_STOCK" else "Arriving Soon",
+                            "status": "On Lot" if car.get('availability') == "IN_STOCK" else "Arriving Soon",
                             "link": f"https://www.bmwusa.com/inventory.html#!/view/{vin}"
                         }
-                        if "San Francisco" in dealer_name:
-                            print(f" [✓] Oracle Found SF {type_tag}: {vin[-6:]}")
-                        else:
-                            print(f" [✓] Oracle Found Shadow {type_tag}: {vin[-6:]} at {dealer_name}")
+                        print(f" [✓] Oracle Found: {type_tag} at {dealer_name}")
             else:
-                print(f" [!] Oracle Blocked. Code: {r.status_code}")
+                print(f" [!] Oracle Blocked (Code: {r.status_code}).")
         except Exception as e:
             print(f" [!] Oracle Logic Error: {e}")
 
-    # 3. FINAL ARCHIVE
+    # 3. SAVE RESULTS
     if found_vins:
         output = {
             "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S PDT"),
@@ -98,7 +99,7 @@ def fetch_inventory():
         }
         with open('data.json', 'w') as f:
             json.dump(output, f, indent=4)
-        print(f"\nSUCCESS: {len(found_vins)} M-Cars archived across the squadron.")
+        print(f"\nSUCCESS: {len(found_vins)} M-Cars archived.")
 
 if __name__ == "__main__":
     fetch_inventory()
