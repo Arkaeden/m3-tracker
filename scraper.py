@@ -1,7 +1,7 @@
 import json
 from curl_cffi import requests
 from datetime import datetime
-import os
+import re
 
 # SONIC GROUP (Mountain View, East Bay, etc.)
 SONIC_DEALERS = [
@@ -32,7 +32,6 @@ def fetch_inventory():
                         if vin.startswith('WBS') and not any(x in model_str for x in ["340", "440"]):
                             type_tag = "M4" if "M4" in model_str else "M3"
                             price_val = str(car.get('askingPrice', 'Call')).replace('$', '').strip()
-                            
                             found_vins[vin] = {
                                 "vin": vin,
                                 "year": car.get('modelYear', '2026'),
@@ -45,41 +44,35 @@ def fetch_inventory():
                             }
             except Exception as e: print(f"Error at {dealer['name']}: {e}")
 
-        # 2. SCAN BMW OF SAN FRANCISCO (Lithia/Sincro Logic)
-        print(f"--- SCANNING: BMW of San Francisco ---")
+        # 2. SCAN BMW OF SAN FRANCISCO (The AI Portal)
+        print(f"--- SCANNING: BMW of San Francisco (AI PORTAL) ---")
         try:
-            # SF requires a Referer header to unlock the JSON data
-            sf_headers = {
-                "Referer": "https://www.bmwsf.com/new-inventory/index.htm",
-                "Accept": "application/json"
-            }
-            # This is the verified Sincro JSON search endpoint for Lithia
-            sf_url = "https://www.bmwsf.com/inventory/search.json?stock_type=new&make=BMW&model=M3,M4"
-            r = s.get(sf_url, headers=sf_headers, impersonate="chrome124", timeout=25)
+            # We target their specific AI-friendly inventory page
+            sf_url = "https://www.bmwsf.com/llm/inventory/"
+            r = s.get(sf_url, impersonate="chrome124", timeout=25)
             
             if r.status_code == 200:
-                sf_data = r.json()
-                # Sincro nests vehicles inside a 'vehicles' list
-                for car in sf_data.get('vehicles', []):
-                    vin = car.get('vin', '')
+                # We use regex to find the VINs and details in the text table
+                # Format is: 2026 BMW M3 Competition (VIN: WBS...) | Type | Color | Mileage | Price | Link
+                rows = re.findall(r'(\d{4})\s(BMW\sM[34]\s[^|]+)\(VIN:\s([A-Z0-9]+)\)\s\|\s[^|]+\s\|\s([^|]+)\s\|\s[^|]+\s\|\s\$?([\d,]+|Call)\s\|\s\[View Details\]\(([^)]+)\)', r.text)
+                
+                for row in rows:
+                    year, model_name, vin, color, price, link = row
                     if vin.startswith('WBS'):
-                        model_name = car.get('model_name', 'M3')
                         type_tag = "M4" if "M4" in model_name else "M3"
-                        price = str(car.get('internet_price', 'Call')).replace('$', '').strip()
-                        
                         found_vins[vin] = {
                             "vin": vin,
-                            "year": car.get('model_year', '2026'),
-                            "model": f"{type_tag} Competition" if 'Competition' in car.get('trim_name', '') else type_tag,
-                            "price": price if price == "Call" else f"${price}",
-                            "color": car.get('ext_color_generic', car.get('ext_color', 'Check Dealer')),
+                            "year": year,
+                            "model": f"{type_tag} Competition" if 'Competition' in model_name else type_tag,
+                            "price": f"${price.strip()}" if price != "Call" else "Call",
+                            "color": color.strip(),
                             "dealer": "BMW of San Francisco",
                             "status": "On Lot",
-                            "link": f"https://www.bmwsf.com/inventory/{car.get('slug', vin)}"
+                            "link": f"https://www.bmwsf.com{link}" if link.startswith('/') else link
                         }
                         print(f" [✓] Added SF {type_tag}: {vin[-6:]}")
             else:
-                print(f" [!] SF Status: {r.status_code} - Possible Firewall Block")
+                print(f" [!] SF Status: {r.status_code}. The AI Portal might be down.")
         except Exception as e:
             print(f" [!] SF Logic Error: {e}")
 
@@ -92,8 +85,6 @@ def fetch_inventory():
         with open('data.json', 'w') as f:
             json.dump(output, f, indent=4)
         print(f"\nSUCCESS: {len(found_vins)} M-Cars archived.")
-    else:
-        print("\nCRITICAL: No allocations found.")
 
 if __name__ == "__main__":
     fetch_inventory()
