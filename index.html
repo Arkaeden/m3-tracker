@@ -152,29 +152,43 @@
 <script>
     const fallbackImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%23121212'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='12' fill='%23555555' letter-spacing='4'%3EIMAGE PENDING%3C/text%3E%3C/svg%3E";
 
-    // MASTER COLOR ASSET DICTIONARY
-    // Replace the placeholder URLs with the links to your custom hosted images.
-    const colorAssets = {
-        // NON-METALLIC / STANDARD
-        "alpine white": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_alpine_white.png",
-        "sao paulo": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_yellow.png",
-        
-        // METALLIC
-        "black sapphire": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_black.png",
-        "portimao blue": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_port_blue.png",
-        "brooklyn": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_brooklyn_grey.png",
-        "skyscraper": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_skyscraper_grey.png",
-        "isle of man": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_isle_green.png",
-        "toronto red": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_toronto_red.png",
-        "aventurin": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_aventurin_red.png",
-        "tanzanite": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_tanzanite_blue.png",
-        "dravit": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_dravit_grey.png",
-
-        // INDIVIDUAL / FROZEN (MATTE)
-        "frozen brilliant": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_frozen_white.png",
-        "frozen portimao": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_frozen_blue.png",
-        "frozen pure": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_frozen_grey.png",
-        "frozen": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_frozen_white.png" // Catch-all for rare frozen colors
+    // NESTED ASSET LIBRARY
+    const assetLibrary = {
+        "M3": {
+            "alpine white": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_alpine_white.png",
+            "sao paulo": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_yellow.png",
+            "black sapphire": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_black.png",
+            "portimao blue": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_port_blue.png",
+            "brooklyn": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_brooklyn_grey.png",
+            "skyscraper": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_skyscraper_grey.png",
+            "isle of man": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_isle_green.png",
+            "toronto red": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_toronto_red.png",
+            "aventurin": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_aventurin_red.png",
+            "tanzanite": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_tanzanite_blue.png",
+            "dravit": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_dravit_grey.png",
+            "frozen brilliant": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_frozen_white.png",
+            "frozen portimao": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_frozen_blue.png",
+            "frozen pure": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_frozen_grey.png",
+            "frozen": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M_frozen_white.png"
+        },
+        "M4": {
+            // Add your M4 specific render URLs here as you create them!
+            "alpine white": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M4_alpine_white.png",
+            "sao paulo": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M4_yellow.png",
+            "black sapphire": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M4_black.png",
+            "portimao blue": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M4_port_blue.png",
+            "brooklyn": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M4_brooklyn_grey.png",
+            "skyscraper": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M4_skyscraper_grey.png",
+            "isle of man": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M4_isle_green.png",
+            "toronto red": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M4_toronto_red.png",
+            "aventurin": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M4_aventurin_red.png",
+            "tanzanite": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M4_tanzanite_blue.png",
+            "dravit": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M4_dravit_grey.png",
+            "frozen brilliant": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M4_frozen_white.png",
+            "frozen portimao": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M4_frozen_blue.png",
+            "frozen pure": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M4_frozen_grey.png",
+            "frozen": "https://matmejia.com/vibe-lab/Revv/Tracker/assets/M4_frozen_white.png"
+        }
     };
 
     fetch('data.json?t=' + new Date().getTime())
@@ -182,60 +196,54 @@
         .then(data => {
             document.getElementById('last-updated').innerText = `SYS.UPDATE: ${data.timestamp}`;
             const gallery = document.getElementById('gallery');
-            
             if (data.vehicles.length === 0) {
-                gallery.innerHTML = '<div style="grid-column: 1 / -1; display: flex; align-items: center; gap: 12px; color: var(--gray-dim);"><span style="color: #FF2200;">></span> 0 ALLOCATIONS DETECTED. RETRYING NEXT CYCLE.</div>';
+                gallery.innerHTML = '<div style="grid-column: 1 / -1; display: flex; align-items: center; gap: 12px; color: var(--gray-dim);"><span style="color: #FF2200;">></span> 0 ALLOCATIONS DETECTED.</div>';
                 return;
             }
-
             gallery.innerHTML = ''; 
 
             data.vehicles.forEach(car => {
                 let safeImageUrl = fallbackImage; 
-                const dealerColorString = car.color.toLowerCase();
+                const dealerColor = car.color.toLowerCase();
+                
+                // Route to M3 or M4 sub-library
+                const modelKey = car.model.includes('M4') ? 'M4' : 'M3';
+                const currentLibrary = assetLibrary[modelKey];
 
-                // Sort keys by length descending to ensure 'Frozen Portimao' is checked before 'Portimao'
-                const sortedKeywords = Object.keys(colorAssets).sort((a, b) => b.length - a.length);
+                const sortedKeywords = Object.keys(currentLibrary).sort((a, b) => b.length - a.length);
 
                 for (const keyword of sortedKeywords) {
-                    // Check for standard color names as well as 'gray' vs 'grey' variations
-                    if (dealerColorString.includes(keyword) || 
-                       (keyword.includes('grey') && dealerColorString.includes(keyword.replace('grey', 'gray')))) {
-                        safeImageUrl = colorAssets[keyword];
+                    if (dealerColor.includes(keyword) || (keyword.includes('grey') && dealerColor.includes(keyword.replace('grey', 'gray')))) {
+                        safeImageUrl = currentLibrary[keyword];
                         break; 
                     }
                 }
 
-                const card = `
+                gallery.innerHTML += `
                     <div class="alt-card">
                         <div class="alt-img-box">
                             ${car.is_new ? '<div class="match-badge">// NEW ALLOCATION</div>' : ''}
-                            <img src="${safeImageUrl}" onerror="this.onerror=null; this.src='${fallbackImage}';" alt="M3">
+                            <img src="${safeImageUrl}" onerror="this.onerror=null; this.src='${fallbackImage}';" alt="${car.model}">
                         </div>
                         <div class="alt-details">
                             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 8px;">
                                 <div class="alt-title">${car.year} ${car.model}</div>
                                 <div class="match-price">${car.price}</div>
                             </div>
-                            
                             <div class="telemetry-grid">
                                 <div>ID // <span>${car.vin.slice(-6)}</span></div>
                                 <div>CLR // <span>${car.color}</span></div>
                                 <div>LOC // <span>${car.dealer}</span></div>
                                 <div>STS // <span>${car.status}</span></div>
                             </div>
-                            
-                            <a href="${car.link}" target="_blank" class="btn-ghost">
-                                INITIALIZE LINK [→]
-                            </a>
+                            <a href="${car.link}" target="_blank" class="btn-ghost">INITIALIZE LINK [→]</a>
                         </div>
                     </div>
                 `;
-                gallery.innerHTML += card;
             });
         })
         .catch(error => {
-            document.getElementById('gallery').innerHTML = '<div style="grid-column: 1 / -1; display: flex; align-items: center; gap: 12px; color: var(--gray-dim);"><span style="color: #FF2200;">></span> CONNECTION OFFLINE. AWAITING INITIAL SCRAPE.</div>';
+            document.getElementById('gallery').innerHTML = '<div style="grid-column: 1 / -1; display: flex; align-items: center; gap: 12px; color: var(--gray-dim);"><span style="color: #FF2200;">></span> CONNECTION OFFLINE.</div>';
         });
 </script>
 </body>
