@@ -1,5 +1,5 @@
 {
-    "timestamp": "2026-05-15 17:16:57 PDT",
+    "timestamp": "2026-05-15 21:39:25 PDT",
     "vehicles": [
         {
             "vin": "WBS13HJ07VFW72370",
@@ -62,6 +62,16 @@
             "link": "https://www.stevenscreekbmw.com/new/WBS33HK00TCX29563.htm"
         },
         {
+            "vin": "WBS33HJ09VFW71388",
+            "year": 2027,
+            "model": "M3",
+            "price": "Call",
+            "color": "Alpine White",
+            "dealer": "Stevens Creek BMW",
+            "status": "On Lot",
+            "link": "https://www.stevenscreekbmw.com/new/WBS33HJ09VFW71388.htm"
+        },
+        {
             "vin": "WBS13HK07TCX48490",
             "year": 2026,
             "model": "M4",
@@ -100,16 +110,6 @@
             "dealer": "Stevens Creek BMW",
             "status": "On Lot",
             "link": "https://www.stevenscreekbmw.com/new/WBS13HK04TCW50226.htm"
-        },
-        {
-            "vin": "WBS33HJ09VFW71388",
-            "year": 2027,
-            "model": "M3",
-            "price": "Call",
-            "color": "Alpine White",
-            "dealer": "Stevens Creek BMW",
-            "status": "On Lot",
-            "link": "https://www.stevenscreekbmw.com/new/WBS33HJ09VFW71388.htm"
         },
         {
             "vin": "WBS33HK03TCX70642",
@@ -250,146 +250,6 @@
             "dealer": "BMW of Mountain View",
             "status": "On Lot",
             "link": "https://www.bmwofmountainview.com/new/WBS43BA05VCY43161.htm"
-        },
-        {
-            "vin": "WBS13HK05TCW66029",
-            "year": 2026,
-            "model": "M4",
-            "price": "$90770",
-            "color": "Alpine White",
-            "dealer": "BMW of Fremont",
-            "status": "On Lot",
-            "link": "https://www.bmwoffremont.com/new/WBS13HK05TCW66029.htm"
-        },
-        {
-            "vin": "WBS23HK01TCX22181",
-            "year": 2026,
-            "model": "M4 Competition",
-            "price": "$91850",
-            "color": "Alpine White",
-            "dealer": "BMW of Fremont",
-            "status": "On Lot",
-            "link": "https://www.bmwoffremont.com/new/WBS23HK01TCX22181.htm"
-        },
-        {
-            "vin": "WBS33HK01TCX10715",
-            "year": 2026,
-            "model": "M4 Competition",
-            "price": "$101325",
-            "color": "Special Order Color",
-            "dealer": "BMW of Fremont",
-            "status": "On Lot",
-            "link": "https://www.bmwoffremont.com/new/WBS33HK01TCX10715.htm"
-        },
-        {
-            "vin": "WBS43BA01TCX25542",
-            "year": 2026,
-            "model": "M4 Competition",
-            "price": "$107385",
-            "color": "Alpine White",
-            "dealer": "BMW of Fremont",
-            "status": "On Lot",
-            "link": "https://www.bmwoffremont.com/new/WBS43BA01TCX25542.htm"
-        },
-        {
-            "vin": "WBS13HK08TCX53925",
-            "year": 2026,
-            "model": "M4",
-            "price": "$116155",
-            "color": "Special Order Color",
-            "dealer": "BMW of Fremont",
-            "status": "On Lot",
-            "link": "https://www.bmwoffremont.com/new/WBS13HK08TCX53925.htm"
-        },
-        {
-            "vin": "WBS33HJ04TFW55368",
-            "year": 2026,
-            "model": "M3 Competition",
-            "price": "$116534",
-            "color": "Special Order Color",
-            "dealer": "BMW of Fremont",
-            "status": "On Lot",
-            "link": "https://www.bmwoffremont.com/new/WBS33HJ04TFW55368.htm"
-        },
-        {
-            "vin": "WBS33HK04TCX15200",
-            "year": 2026,
-            "model": "M4 Competition",
-            "price": "$120335",
-            "color": "Special Order Color",
-            "dealer": "BMW of Fremont",
-            "status": "On Lot",
-            "link": "https://www.bmwoffremont.com/new/WBS33HK04TCX15200.htm"
-        },
-        {
-            "vin": "WBS13HK04VCY37551",
-            "year": 2027,
-            "model": "M4",
-            "price": "$91645",
-            "color": "Special Order Color",
-            "dealer": "BMW of Fremont",
-            "status": "On Lot",
-            "link": "https://www.bmwoffremont.com/new/WBS13HK04VCY37551.htm"
-        },
-        {
-            "vin": "WBS33HJ08VFX05529",
-            "year": 2027,
-            "model": "M3",
-            "price": "$94500",
-            "color": "Alpine White",
-            "dealer": "BMW of Fremont",
-            "status": "On Lot",
-            "link": "https://www.bmwoffremont.com/new/WBS33HJ08VFX05529.htm"
-        },
-        {
-            "vin": "WBS13HJ07TFW49510",
-            "year": 2026,
-            "model": "M3",
-            "price": "$98825",
-            "color": "Special Order Color",
-            "dealer": "BMW of Fremont",
-            "status": "On Lot",
-            "link": "https://www.bmwoffremont.com/new/WBS13HJ07TFW49510.htm"
-        },
-        {
-            "vin": "WBS33HJ00VFW87026",
-            "year": 2027,
-            "model": "M3",
-            "price": "$100000",
-            "color": "Alpine White",
-            "dealer": "BMW of Fremont",
-            "status": "On Lot",
-            "link": "https://www.bmwoffremont.com/new/WBS33HJ00VFW87026.htm"
-        },
-        {
-            "vin": "WBS33HK05VCY30939",
-            "year": 2027,
-            "model": "M4",
-            "price": "$101150",
-            "color": "Black Sapphire Metallic",
-            "dealer": "BMW of Fremont",
-            "status": "On Lot",
-            "link": "https://www.bmwoffremont.com/new/WBS33HK05VCY30939.htm"
-        },
-        {
-            "vin": "WBS33HK08VCY01693",
-            "year": 2027,
-            "model": "M4",
-            "price": "$105235",
-            "color": "Dravit Grey Metallic",
-            "dealer": "BMW of Fremont",
-            "status": "On Lot",
-            "link": "https://www.bmwoffremont.com/new/WBS33HK08VCY01693.htm"
-        },
-        {
-            "vin": "WBS33HK04TCX66728",
-            "year": 2026,
-            "model": "M4 Competition",
-            "price": "$107930",
-            "color": "Black Sapphire",
-            "dealer": "BMW of Fremont",
-            "status": "On Lot",
-            "link": "https://www.bmwoffremont.com/new/WBS33HK04TCX66728.htm"
         },
         {
             "vin": "WBS13HK09TCX43047",
