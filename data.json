@@ -1,6 +1,76 @@
 {
-    "timestamp": "2026-05-16 15:38:46 PDT",
+    "timestamp": "2026-05-16 20:32:49 PDT",
     "vehicles": [
+        {
+            "vin": "WBS13HJ07VFW72370",
+            "year": 2027,
+            "model": "M3",
+            "price": "Call",
+            "color": "C31",
+            "dealer": "BMW Concord",
+            "status": "On Lot",
+            "link": "https://www.bmwconcord.com/new/WBS13HJ07VFW72370.htm"
+        },
+        {
+            "vin": "WBS23HK02VCY23278",
+            "year": 2027,
+            "model": "M4 Competition",
+            "price": "$91793",
+            "color": "Brooklyn Grey Metallic",
+            "dealer": "East Bay BMW",
+            "status": "On Lot",
+            "link": "https://www.eastbaybmw.com/new/WBS23HK02VCY23278.htm"
+        },
+        {
+            "vin": "WBS23HJ04VFW72234",
+            "year": 2027,
+            "model": "M3 Competition",
+            "price": "$92433",
+            "color": "Skyscraper Grey Metallic",
+            "dealer": "East Bay BMW",
+            "status": "On Lot",
+            "link": "https://www.eastbaybmw.com/new/WBS23HJ04VFW72234.htm"
+        },
+        {
+            "vin": "WBS33HK06VCY31114",
+            "year": 2027,
+            "model": "M4 Competition",
+            "price": "$98648",
+            "color": "Dravit Grey Metallic",
+            "dealer": "East Bay BMW",
+            "status": "On Lot",
+            "link": "https://www.eastbaybmw.com/new/WBS33HK06VCY31114.htm"
+        },
+        {
+            "vin": "WBS33HK06VCY32361",
+            "year": 2027,
+            "model": "M4 Competition",
+            "price": "$99883",
+            "color": "Dravit Grey Metallic",
+            "dealer": "East Bay BMW",
+            "status": "On Lot",
+            "link": "https://www.eastbaybmw.com/new/WBS33HK06VCY32361.htm"
+        },
+        {
+            "vin": "WBS43BA05VCY37635",
+            "year": 2027,
+            "model": "M4 Competition",
+            "price": "$105743",
+            "color": "Alpine White",
+            "dealer": "East Bay BMW",
+            "status": "On Lot",
+            "link": "https://www.eastbaybmw.com/new/WBS43BA05VCY37635.htm"
+        },
+        {
+            "vin": "WBS43BA0XVCY37629",
+            "year": 2027,
+            "model": "M4 Competition",
+            "price": "$105843",
+            "color": "Black Sapphire Metallic",
+            "dealer": "East Bay BMW",
+            "status": "On Lot",
+            "link": "https://www.eastbaybmw.com/new/WBS43BA0XVCY37629.htm"
+        },
         {
             "vin": "WBS33HK00TCX29563",
             "year": 2026,
@@ -190,6 +260,236 @@
             "dealer": "BMW of Mountain View",
             "status": "On Lot",
             "link": "https://www.bmwofmountainview.com/new/WBS43BA05VCY43161.htm"
+        },
+        {
+            "vin": "WBS13HK05TCW66029",
+            "year": 2026,
+            "model": "M4",
+            "price": "$90770",
+            "color": "Alpine White",
+            "dealer": "BMW of Fremont",
+            "status": "On Lot",
+            "link": "https://www.bmwoffremont.com/new/WBS13HK05TCW66029.htm"
+        },
+        {
+            "vin": "WBS23HK01TCX22181",
+            "year": 2026,
+            "model": "M4 Competition",
+            "price": "$91850",
+            "color": "Alpine White",
+            "dealer": "BMW of Fremont",
+            "status": "On Lot",
+            "link": "https://www.bmwoffremont.com/new/WBS23HK01TCX22181.htm"
+        },
+        {
+            "vin": "WBS33HK01TCX10715",
+            "year": 2026,
+            "model": "M4 Competition",
+            "price": "$101325",
+            "color": "Special Order Color",
+            "dealer": "BMW of Fremont",
+            "status": "On Lot",
+            "link": "https://www.bmwoffremont.com/new/WBS33HK01TCX10715.htm"
+        },
+        {
+            "vin": "WBS43BA01TCX25542",
+            "year": 2026,
+            "model": "M4 Competition",
+            "price": "$107385",
+            "color": "Alpine White",
+            "dealer": "BMW of Fremont",
+            "status": "On Lot",
+            "link": "https://www.bmwoffremont.com/new/WBS43BA01TCX25542.htm"
+        },
+        {
+            "vin": "WBS13HK08TCX53925",
+            "year": 2026,
+            "model": "M4",
+            "price": "$116155",
+            "color": "Special Order Color",
+            "dealer": "BMW of Fremont",
+            "status": "On Lot",
+            "link": "https://www.bmwoffremont.com/new/WBS13HK08TCX53925.htm"
+        },
+        {
+            "vin": "WBS33HK04TCX15200",
+            "year": 2026,
+            "model": "M4 Competition",
+            "price": "$120335",
+            "color": "Special Order Color",
+            "dealer": "BMW of Fremont",
+            "status": "On Lot",
+            "link": "https://www.bmwoffremont.com/new/WBS33HK04TCX15200.htm"
+        },
+        {
+            "vin": "WBS13HK04VCY37551",
+            "year": 2027,
+            "model": "M4",
+            "price": "$91645",
+            "color": "Special Order Color",
+            "dealer": "BMW of Fremont",
+            "status": "On Lot",
+            "link": "https://www.bmwoffremont.com/new/WBS13HK04VCY37551.htm"
+        },
+        {
+            "vin": "WBS33HJ08VFX05529",
+            "year": 2027,
+            "model": "M3",
+            "price": "$94500",
+            "color": "Alpine White",
+            "dealer": "BMW of Fremont",
+            "status": "On Lot",
+            "link": "https://www.bmwoffremont.com/new/WBS33HJ08VFX05529.htm"
+        },
+        {
+            "vin": "WBS13HJ07TFW49510",
+            "year": 2026,
+            "model": "M3",
+            "price": "$98825",
+            "color": "Special Order Color",
+            "dealer": "BMW of Fremont",
+            "status": "On Lot",
+            "link": "https://www.bmwoffremont.com/new/WBS13HJ07TFW49510.htm"
+        },
+        {
+            "vin": "WBS33HJ00VFW87026",
+            "year": 2027,
+            "model": "M3",
+            "price": "$100000",
+            "color": "Alpine White",
+            "dealer": "BMW of Fremont",
+            "status": "On Lot",
+            "link": "https://www.bmwoffremont.com/new/WBS33HJ00VFW87026.htm"
+        },
+        {
+            "vin": "WBS33HK05VCY30939",
+            "year": 2027,
+            "model": "M4",
+            "price": "$101150",
+            "color": "Black Sapphire Metallic",
+            "dealer": "BMW of Fremont",
+            "status": "On Lot",
+            "link": "https://www.bmwoffremont.com/new/WBS33HK05VCY30939.htm"
+        },
+        {
+            "vin": "WBS33HK08VCY01693",
+            "year": 2027,
+            "model": "M4",
+            "price": "$105235",
+            "color": "Dravit Grey Metallic",
+            "dealer": "BMW of Fremont",
+            "status": "On Lot",
+            "link": "https://www.bmwoffremont.com/new/WBS33HK08VCY01693.htm"
+        },
+        {
+            "vin": "WBS33HK04TCX66728",
+            "year": 2026,
+            "model": "M4 Competition",
+            "price": "$107930",
+            "color": "Black Sapphire",
+            "dealer": "BMW of Fremont",
+            "status": "On Lot",
+            "link": "https://www.bmwoffremont.com/new/WBS33HK04TCX66728.htm"
+        },
+        {
+            "vin": "WBS13HK09TCX43047",
+            "year": 2026,
+            "model": "M4",
+            "price": "Call",
+            "color": "Black Sapphire",
+            "dealer": "BMW Concord",
+            "status": "On Lot",
+            "link": "https://www.bmwconcord.com/new/WBS13HK09TCX43047.htm"
+        },
+        {
+            "vin": "WBS13HJ07TFW46543",
+            "year": 2026,
+            "model": "M3",
+            "price": "Call",
+            "color": "San Marino Blue",
+            "dealer": "BMW Concord",
+            "status": "On Lot",
+            "link": "https://www.bmwconcord.com/new/WBS13HJ07TFW46543.htm"
+        },
+        {
+            "vin": "WBS13HK07TCW49247",
+            "year": 2026,
+            "model": "M4",
+            "price": "Call",
+            "color": "Tanzanite Blue II Metallic",
+            "dealer": "BMW Concord",
+            "status": "On Lot",
+            "link": "https://www.bmwconcord.com/new/WBS13HK07TCW49247.htm"
+        },
+        {
+            "vin": "WBS13HK00VCY13943",
+            "year": 2027,
+            "model": "M4 Competition",
+            "price": "Call",
+            "color": "Grey",
+            "dealer": "BMW Concord",
+            "status": "On Lot",
+            "link": "https://www.bmwconcord.com/new/WBS13HK00VCY13943.htm"
+        },
+        {
+            "vin": "WBS23HJ00VFW89726",
+            "year": 2027,
+            "model": "M3 Competition",
+            "price": "Call",
+            "color": "C4p",
+            "dealer": "BMW Concord",
+            "status": "On Lot",
+            "link": "https://www.bmwconcord.com/new/WBS23HJ00VFW89726.htm"
+        },
+        {
+            "vin": "WBS33HJ01VFW90193",
+            "year": 2027,
+            "model": "M3 Competition",
+            "price": "Call",
+            "color": "C4w",
+            "dealer": "BMW Concord",
+            "status": "On Lot",
+            "link": "https://www.bmwconcord.com/new/WBS33HJ01VFW90193.htm"
+        },
+        {
+            "vin": "WBS33HJ08VFW90823",
+            "year": 2027,
+            "model": "M3 Competition",
+            "price": "Call",
+            "color": "C3z",
+            "dealer": "BMW Concord",
+            "status": "On Lot",
+            "link": "https://www.bmwconcord.com/new/WBS33HJ08VFW90823.htm"
+        },
+        {
+            "vin": "WBS33HJ08VFW82401",
+            "year": 2027,
+            "model": "M3 Competition",
+            "price": "Call",
+            "color": "C3z",
+            "dealer": "BMW Concord",
+            "status": "On Lot",
+            "link": "https://www.bmwconcord.com/new/WBS33HJ08VFW82401.htm"
+        },
+        {
+            "vin": "WBS33HK07VCY17674",
+            "year": 2027,
+            "model": "M4 Competition",
+            "price": "Call",
+            "color": "Grey",
+            "dealer": "BMW Concord",
+            "status": "On Lot",
+            "link": "https://www.bmwconcord.com/new/WBS33HK07VCY17674.htm"
+        },
+        {
+            "vin": "WBS33HK05TCX61909",
+            "year": 2026,
+            "model": "M4 Competition",
+            "price": "Call",
+            "color": "Tanzanite Blue II Metallic",
+            "dealer": "BMW Concord",
+            "status": "On Lot",
+            "link": "https://www.bmwconcord.com/new/WBS33HK05TCX61909.htm"
         }
     ]
 }
