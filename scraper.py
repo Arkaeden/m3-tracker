@@ -2,7 +2,7 @@ import json
 from curl_cffi import requests
 from datetime import datetime
 import os
-import time  # New engine component for automated throttling
+import time
 
 # SQUADRON REGISTRY
 SONIC_DEALERS = [
@@ -18,73 +18,88 @@ SONIC_DEALERS = [
 def fetch_inventory():
     found_vins = {}
     
-    # Premium user-agent masking to slip past 403 firewall parameters
-    custom_headers = {
-        "Accept": "application/json, text/plain, */*",
-        "Accept-Language": "en-US,en;q=0.9",
-        "Referer": "https://www.google.com/",
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
-    }
-    
     with requests.Session() as s:
-        s.headers.update(custom_headers)
-        
         for dealer in SONIC_DEALERS:
             dealer_count = 0
             print(f"--- SCANNING: {dealer['name']} ---")
             
+            # Dynamic Referer Spoofing: Matches the specific dealer's internal domain structure
+            s.headers.update({
+                "Accept": "application/json, text/plain, */*",
+                "Accept-Language": "en-US,en;q=0.9",
+                "Referer": f"https://www.{dealer['domain']}/new-inventory/index.htm",
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+            })
+            
             for model_target in ["M3", "M4"]:
-                # Primary modern widget path
+                # Primary modern widget path configuration
                 url = f"https://www.{dealer['domain']}/apis/widget/INVENTORY_LISTING_DEFAULT_AUTO_NEW:inventory-data-bus1/getInventory?make=BMW&model={model_target}"
                 
-                try:
-                    response = s.get(url, impersonate="chrome124", timeout=25)
-                    
-                    # Fallback mechanism if a dealer throws a 404 (Migrated to Bus2 routing architecture)
-                    if response.status_code == 404:
-                        url = f"https://www.{dealer['domain']}/apis/widget/INVENTORY_LISTING_DEFAULT_AUTO_NEW:inventory-data-bus2/getInventory?make=BMW&model={model_target}"
-                        response = s.get(url, impersonate="chrome124", timeout=25)
-
-                    if response.status_code == 200:
-                        data = response.json()
-                        cars = data.get('pageInfo', {}).get('trackingData', [])
-                        
-                        for car in cars:
-                            vin = car.get('vin', 'N/A')
-                            model_str = car.get('model', '')
-                            
-                            if vin.startswith('WBS') and not any(x in model_str for x in ["340", "440"]):
-                                type_tag = "M4" if "M4" in model_str else "M3"
-                                raw_p = str(car.get('askingPrice', 'Call')).replace('$', '').replace(',', '').strip()
-                                
-                                found_vins[vin] = {
-                                    "vin": vin,
-                                    "year": car.get('modelYear', '2026'),
-                                    "model": f"{type_tag} Competition" if 'Comp' in car.get('trim', '') else type_tag,
-                                    "price": f"${raw_p}" if raw_p.isdigit() else "Call",
-                                    "color": car.get('exteriorColor', 'Check Dealer'),
-                                    "dealer": dealer['name'],
-                                    "status": "In Transit" if car.get('inTransit') else "On Lot",
-                                    "link": f"https://www.{dealer['domain']}/new/{vin}.htm"
-                                }
-                                dealer_count += 1
-                                
-                    elif response.status_code == 429:
-                        print(f" [!] Warning: Throttled by {dealer['name']} on [{model_target}] query.")
-                    else:
-                        print(f" [!] Connection Bypass Failed: {dealer['name']} returned {response.status_code} for {model_target}")
-                        
-                except Exception as e:
-                    print(f" [!] Pipeline latency error at {dealer['name']} [{model_target}]: {e}")
+                attempts = 0
+                max_attempts = 2
+                success = False
                 
-                # HUMANIZING DELAY: Pause for 3 seconds between model strikes to prevent 429 triggers
-                time.sleep(3.0)
+                while attempts < max_attempts and not success:
+                    try:
+                        response = s.get(url, impersonate="chrome124", timeout=25)
+                        
+                        # Fallback mechanism if a dealer throws a 404 (Reroute to Bus2 setup)
+                        if response.status_code == 404:
+                            url = f"https://www.{dealer['domain']}/apis/widget/INVENTORY_LISTING_DEFAULT_AUTO_NEW:inventory-data-bus2/getInventory?make=BMW&model={model_target}"
+                            response = s.get(url, impersonate="chrome124", timeout=25)
+                        
+                        # Fallback mechanism if a dealer throws a second 404 (Reroute to alternative corporate endpoint)
+                        if response.status_code == 404:
+                            url = f"https://www.{dealer['domain']}/apis/widget/INVENTORY_LISTING_DEFAULT_AUTO_NEW:inventory-data-bus3/getInventory?make=BMW&model={model_target}"
+                            response = s.get(url, impersonate="chrome124", timeout=25)
+
+                        if response.status_code == 200:
+                            data = response.json()
+                            cars = data.get('pageInfo', {}).get('trackingData', [])
+                            
+                            for car in cars:
+                                vin = car.get('vin', 'N/A')
+                                model_str = car.get('model', '')
+                                
+                                if vin.startswith('WBS') and not any(x in model_str for x in ["340", "440"]):
+                                    type_tag = "M4" if "M4" in model_str else "M3"
+                                    raw_p = str(car.get('askingPrice', 'Call')).replace('$', '').replace(',', '').strip()
+                                    
+                                    found_vins[vin] = {
+                                        "vin": vin,
+                                        "year": car.get('modelYear', '2026'),
+                                        "model": f"{type_tag} Competition" if 'Comp' in car.get('trim', '') else type_tag,
+                                        "price": f"${raw_p}" if raw_p.isdigit() else "Call",
+                                        "color": car.get('exteriorColor', 'Check Dealer'),
+                                        "dealer": dealer['name'],
+                                        "status": "In Transit" if car.get('inTransit') else "On Lot",
+                                        "link": f"https://www.{dealer['domain']}/new/{vin}.htm"
+                                    }
+                                    dealer_count += 1
+                            success = True
+                            
+                        elif response.status_code == 429:
+                            attempts += 1
+                            if attempts < max_attempts:
+                                print(f" [!] Rate limited by {dealer['name']}. Deploying cool-off sequence (7s)...")
+                                time.sleep(7.0)
+                            else:
+                                print(f" [!] Connection Terminated: {dealer['name']} blocked request after retry loop.")
+                        else:
+                            print(f" [!] Request Bypass Refused: {dealer['name']} returned status code {response.status_code}")
+                            success = True  # Break out of loop for non-429 errors
+                            
+                    except Exception as e:
+                        print(f" [!] Pipeline error at {dealer['name']} [{model_target}]: {e}")
+                        success = True
+                
+                # Standard throttle safety window between model changes
+                time.sleep(3.5)
             
             print(f" >> SQUADRON LOG: {dealer['name']} verified at [{dealer_count} UNITS]")
-            # Brief cool-off pause between separate dealerships
-            time.sleep(1.5)
+            time.sleep(2.0)
 
-    # OUTPUT GENERATION
+    # OUTPUT COMPILATION
     if found_vins:
         output = {
             "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S PDT"),
