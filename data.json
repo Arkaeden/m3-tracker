@@ -1,5 +1,5 @@
 {
-    "timestamp": "2026-05-17 19:12:08 PDT",
+    "timestamp": "2026-05-17 19:15:19 PDT",
     "vehicles": [
         {
             "vin": "WBS13HJ07VFW72370",
@@ -410,6 +410,56 @@
             "dealer": "BMW of Fremont",
             "status": "On Lot",
             "link": "https://www.bmwoffremont.com/new/WBS33HK04TCX66728.htm"
+        },
+        {
+            "vin": "WBS13HJ07TFW46543",
+            "year": 2026,
+            "model": "M3",
+            "price": "Call",
+            "color": "San Marino Blue",
+            "dealer": "BMW Concord",
+            "status": "On Lot",
+            "link": "https://www.bmwconcord.com/new/WBS13HJ07TFW46543.htm"
+        },
+        {
+            "vin": "WBS23HJ00VFW89726",
+            "year": 2027,
+            "model": "M3 Competition",
+            "price": "Call",
+            "color": "Brooklyn Grey Metallic",
+            "dealer": "BMW Concord",
+            "status": "On Lot",
+            "link": "https://www.bmwconcord.com/new/WBS23HJ00VFW89726.htm"
+        },
+        {
+            "vin": "WBS33HJ01VFW90193",
+            "year": 2027,
+            "model": "M3 Competition",
+            "price": "Call",
+            "color": "C4w",
+            "dealer": "BMW Concord",
+            "status": "On Lot",
+            "link": "https://www.bmwconcord.com/new/WBS33HJ01VFW90193.htm"
+        },
+        {
+            "vin": "WBS33HJ08VFW90823",
+            "year": 2027,
+            "model": "M3 Competition",
+            "price": "Call",
+            "color": "C3z",
+            "dealer": "BMW Concord",
+            "status": "On Lot",
+            "link": "https://www.bmwconcord.com/new/WBS33HJ08VFW90823.htm"
+        },
+        {
+            "vin": "WBS33HJ08VFW82401",
+            "year": 2027,
+            "model": "M3 Competition",
+            "price": "Call",
+            "color": "C3z",
+            "dealer": "BMW Concord",
+            "status": "On Lot",
+            "link": "https://www.bmwconcord.com/new/WBS33HJ08VFW82401.htm"
         },
         {
             "vin": "WBS13HK09TCX43047",
