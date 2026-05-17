@@ -1,15 +1,15 @@
 {
-    "timestamp": "2026-05-17 19:24:25 PDT",
+    "timestamp": "2026-05-17 20:37:18 PDT",
     "vehicles": [
         {
             "vin": "WBS13HJ07VFW72370",
             "year": 2027,
             "model": "M3",
-            "price": "$90583",
+            "price": "Call",
             "color": "Portimao Blue Metallic",
-            "dealer": "East Bay BMW",
+            "dealer": "BMW Concord",
             "status": "On Lot",
-            "link": "https://www.eastbaybmw.com/new/WBS13HJ07VFW72370.htm"
+            "link": "https://www.bmwconcord.com/new/WBS13HJ07VFW72370.htm"
         },
         {
             "vin": "WBS23HJ04VFW72234",
@@ -82,16 +82,6 @@
             "link": "https://www.stevenscreekbmw.com/new/WBS13HJ05TFW44032.htm"
         },
         {
-            "vin": "WBS33HJ09VFW71388",
-            "year": 2027,
-            "model": "M3",
-            "price": "Call",
-            "color": "Alpine White",
-            "dealer": "Stevens Creek BMW",
-            "status": "On Lot",
-            "link": "https://www.stevenscreekbmw.com/new/WBS33HJ09VFW71388.htm"
-        },
-        {
             "vin": "WBS23HJ07VFW68579",
             "year": 2027,
             "model": "M3",
@@ -100,16 +90,6 @@
             "dealer": "Stevens Creek BMW",
             "status": "On Lot",
             "link": "https://www.stevenscreekbmw.com/new/WBS23HJ07VFW68579.htm"
-        },
-        {
-            "vin": "WBS33HK00TCX29563",
-            "year": 2026,
-            "model": "M4 Competition",
-            "price": "Call",
-            "color": "Black Sapphire",
-            "dealer": "Stevens Creek BMW",
-            "status": "On Lot",
-            "link": "https://www.stevenscreekbmw.com/new/WBS33HK00TCX29563.htm"
         },
         {
             "vin": "WBS13HK07TCX48490",
@@ -172,56 +152,6 @@
             "link": "https://www.stevenscreekbmw.com/new/WBS33HK09VCY18793.htm"
         },
         {
-            "vin": "WBS33HJ04TFW12875",
-            "year": 2026,
-            "model": "M3 Competition",
-            "price": "$96710",
-            "color": "Sao Paulo Yellow",
-            "dealer": "BMW of Mountain View",
-            "status": "On Lot",
-            "link": "https://www.bmwofmountainview.com/new/WBS33HJ04TFW12875.htm"
-        },
-        {
-            "vin": "WBS13HJ03VFW73628",
-            "year": 2027,
-            "model": "M3",
-            "price": "$88835",
-            "color": "Portimao Blue Metallic",
-            "dealer": "BMW of Mountain View",
-            "status": "On Lot",
-            "link": "https://www.bmwofmountainview.com/new/WBS13HJ03VFW73628.htm"
-        },
-        {
-            "vin": "WBS23HJ01VFW96796",
-            "year": 2027,
-            "model": "M3",
-            "price": "$95385",
-            "color": "Isle Of Man Green Metallic",
-            "dealer": "BMW of Mountain View",
-            "status": "On Lot",
-            "link": "https://www.bmwofmountainview.com/new/WBS23HJ01VFW96796.htm"
-        },
-        {
-            "vin": "WBS33HJ04VFX04815",
-            "year": 2027,
-            "model": "M3",
-            "price": "$98900",
-            "color": "Dravit Grey Metallic",
-            "dealer": "BMW of Mountain View",
-            "status": "On Lot",
-            "link": "https://www.bmwofmountainview.com/new/WBS33HJ04VFX04815.htm"
-        },
-        {
-            "vin": "WBS33HJ06VFW83353",
-            "year": 2027,
-            "model": "M3",
-            "price": "$99185",
-            "color": "Aventurin Red Metallic",
-            "dealer": "BMW of Mountain View",
-            "status": "On Lot",
-            "link": "https://www.bmwofmountainview.com/new/WBS33HJ06VFW83353.htm"
-        },
-        {
             "vin": "WBS13HK05TCW78715",
             "year": 2026,
             "model": "M4",
@@ -242,16 +172,6 @@
             "link": "https://www.bmwofmountainview.com/new/WBS33HK00TCX31068.htm"
         },
         {
-            "vin": "WBS33HK06TCX28305",
-            "year": 2026,
-            "model": "M4 Competition",
-            "price": "Call",
-            "color": "Special Order Color",
-            "dealer": "BMW of Mountain View",
-            "status": "On Lot",
-            "link": "https://www.bmwofmountainview.com/new/WBS33HK06TCX28305.htm"
-        },
-        {
             "vin": "WBS43BA02TCX59294",
             "year": 2026,
             "model": "M4 Competition",
@@ -270,16 +190,6 @@
             "dealer": "BMW of Mountain View",
             "status": "On Lot",
             "link": "https://www.bmwofmountainview.com/new/WBS43BA05VCY43161.htm"
-        },
-        {
-            "vin": "WBS33HJ04TFW55368",
-            "year": 2026,
-            "model": "M3 Competition",
-            "price": "Call",
-            "color": "Special Order Color",
-            "dealer": "BMW of Fremont",
-            "status": "On Lot",
-            "link": "https://www.bmwoffremont.com/new/WBS33HJ04TFW55368.htm"
         },
         {
             "vin": "WBS33HJ08VFX05529",
@@ -416,7 +326,7 @@
             "year": 2026,
             "model": "M3",
             "price": "Call",
-            "color": "San Marino Blue",
+            "color": "San Marino Blue Metallic",
             "dealer": "BMW Concord",
             "status": "On Lot",
             "link": "https://www.bmwconcord.com/new/WBS13HJ07TFW46543.htm"
@@ -436,7 +346,7 @@
             "year": 2027,
             "model": "M3 Competition",
             "price": "Call",
-            "color": "C4w",
+            "color": "Skyscraper Grey Metallic",
             "dealer": "BMW Concord",
             "status": "On Lot",
             "link": "https://www.bmwconcord.com/new/WBS33HJ01VFW90193.htm"
@@ -446,7 +356,7 @@
             "year": 2027,
             "model": "M3 Competition",
             "price": "Call",
-            "color": "C3z",
+            "color": "Tanzanite Blue II Metallic",
             "dealer": "BMW Concord",
             "status": "On Lot",
             "link": "https://www.bmwconcord.com/new/WBS33HJ08VFW90823.htm"
@@ -456,60 +366,10 @@
             "year": 2027,
             "model": "M3 Competition",
             "price": "Call",
-            "color": "C3z",
+            "color": "Tanzanite Blue II Metallic",
             "dealer": "BMW Concord",
             "status": "On Lot",
             "link": "https://www.bmwconcord.com/new/WBS33HJ08VFW82401.htm"
-        },
-        {
-            "vin": "WBS13HK09TCX43047",
-            "year": 2026,
-            "model": "M4",
-            "price": "Call",
-            "color": "Black Sapphire",
-            "dealer": "BMW Concord",
-            "status": "On Lot",
-            "link": "https://www.bmwconcord.com/new/WBS13HK09TCX43047.htm"
-        },
-        {
-            "vin": "WBS13HK07TCW49247",
-            "year": 2026,
-            "model": "M4",
-            "price": "Call",
-            "color": "Tanzanite Blue II Metallic",
-            "dealer": "BMW Concord",
-            "status": "On Lot",
-            "link": "https://www.bmwconcord.com/new/WBS13HK07TCW49247.htm"
-        },
-        {
-            "vin": "WBS13HK00VCY13943",
-            "year": 2027,
-            "model": "M4 Competition",
-            "price": "Call",
-            "color": "Dravit Grey Metallic",
-            "dealer": "BMW Concord",
-            "status": "On Lot",
-            "link": "https://www.bmwconcord.com/new/WBS13HK00VCY13943.htm"
-        },
-        {
-            "vin": "WBS33HK07VCY17674",
-            "year": 2027,
-            "model": "M4 Competition",
-            "price": "Call",
-            "color": "Grey",
-            "dealer": "BMW Concord",
-            "status": "On Lot",
-            "link": "https://www.bmwconcord.com/new/WBS33HK07VCY17674.htm"
-        },
-        {
-            "vin": "WBS33HK05TCX61909",
-            "year": 2026,
-            "model": "M4 Competition",
-            "price": "Call",
-            "color": "Tanzanite Blue II Metallic",
-            "dealer": "BMW Concord",
-            "status": "On Lot",
-            "link": "https://www.bmwconcord.com/new/WBS33HK05TCX61909.htm"
         }
     ]
 }
