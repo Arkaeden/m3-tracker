@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REVV AI • M3/M4 ALLOCATION TRACKER</title>
-    <!-- Premium Font Preconnects -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@400;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
@@ -85,6 +84,14 @@
         
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
+        /* Telemetry Counter Bridge Styling */
+        .telemetry-counter-bridge {
+            display: flex; gap: 32px; margin-bottom: 32px; font-family: 'Space Mono', monospace;
+            font-size: 11px; letter-spacing: 0.08em; border-bottom: 1px solid var(--border); padding-bottom: 20px;
+        }
+        .counter-block { color: var(--gray-dim); text-transform: uppercase; }
+        .counter-block span { color: var(--white); font-weight: 700; }
+
         /* Grid & Cards */
         .alternates-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; margin-bottom: 48px; }
         .alt-card { background: var(--srf-1); border: 1px solid var(--border); display: flex; flex-direction: column; position: relative; transition: border-color var(--trans); }
@@ -135,8 +142,12 @@
             </div>
         </header>
 
+        <div class="telemetry-counter-bridge">
+            <div class="counter-block">M3.TOTAL // <span id="m3-count">00</span></div>
+            <div class="counter-block">M4.TOTAL // <span id="m4-count">00</span></div>
+        </div>
+
         <main class="alternates-grid" id="gallery">
-            <!-- Loading State -->
             <div style="grid-column: 1 / -1; display: flex; align-items: center; gap: 12px; color: var(--gray-text); font-size: 11px; letter-spacing: 0.05em;">
                 <span style="color: var(--accent);">></span> INITIALIZING ALLOCATION PROTOCOL...
             </div>
@@ -205,12 +216,23 @@
             }
             gallery.innerHTML = ''; 
 
+            // Initialize counter variables
+            let m3Count = 0;
+            let m4Count = 0;
+
             data.vehicles.forEach(car => {
                 let safeImageUrl = fallbackImage; 
                 const dealerColor = car.color.toLowerCase();
                 
                 const modelKey = car.model.includes('M4') ? 'M4' : 'M3';
                 const currentLibrary = assetLibrary[modelKey];
+
+                // Dynamically increment counts based on chassis match
+                if (modelKey === 'M4') {
+                    m4Count++;
+                } else {
+                    m3Count++;
+                }
 
                 const sortedKeywords = Object.keys(currentLibrary).sort((a, b) => b.length - a.length);
 
@@ -247,6 +269,10 @@
                     </div>
                 `;
             });
+
+            // Update UI Counters with standardized zero padding
+            document.getElementById('m3-count').innerText = m3Count.toString().padStart(2, '0');
+            document.getElementById('m4-count').innerText = m4Count.toString().padStart(2, '0');
         })
         .catch(error => {
             document.getElementById('gallery').innerHTML = '<div style="grid-column: 1 / -1; display: flex; align-items: center; gap: 12px; color: var(--gray-dim);"><span style="color: #FF2200;">></span> CONNECTION OFFLINE.</div>';
