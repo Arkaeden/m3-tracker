@@ -1,5 +1,5 @@
 {
-    "timestamp": "2026-05-18 12:53:34 PDT",
+    "timestamp": "2026-05-18 21:56:27 PDT",
     "vehicles": [
         {
             "vin": "WBS13HJ07VFW72370",
@@ -160,16 +160,6 @@
             "dealer": "BMW of Mountain View",
             "status": "On Lot",
             "link": "https://www.bmwofmountainview.com/new/WBS13HJ03VFW73628.htm"
-        },
-        {
-            "vin": "WBS23HJ01VFW96796",
-            "year": 2027,
-            "model": "M3",
-            "price": "$95385",
-            "color": "Isle Of Man Green Metallic",
-            "dealer": "BMW of Mountain View",
-            "status": "On Lot",
-            "link": "https://www.bmwofmountainview.com/new/WBS23HJ01VFW96796.htm"
         },
         {
             "vin": "WBS33HJ04VFX04815",
@@ -434,7 +424,7 @@
         {
             "vin": "WBS13HK00VCY13943",
             "year": 2027,
-            "model": "M4 Competition",
+            "model": "M4",
             "price": "Call",
             "color": "Grey",
             "dealer": "BMW Concord",
