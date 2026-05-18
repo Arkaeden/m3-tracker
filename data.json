@@ -1,5 +1,5 @@
 {
-    "timestamp": "2026-05-17 23:15:55 PDT",
+    "timestamp": "2026-05-18 12:53:34 PDT",
     "vehicles": [
         {
             "vin": "WBS13HJ07VFW72370",
@@ -120,16 +120,6 @@
             "dealer": "Stevens Creek BMW",
             "status": "On Lot",
             "link": "https://www.stevenscreekbmw.com/new/WBS13HK04TCW50226.htm"
-        },
-        {
-            "vin": "WBS33HK03TCX70642",
-            "year": 2026,
-            "model": "M4 Competition",
-            "price": "Call",
-            "color": "Tanzanite Blue II Metallic",
-            "dealer": "Stevens Creek BMW",
-            "status": "On Lot",
-            "link": "https://www.stevenscreekbmw.com/new/WBS33HK03TCX70642.htm"
         },
         {
             "vin": "WBS33HK02VCY13810",
