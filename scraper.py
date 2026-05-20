@@ -23,7 +23,6 @@ def fetch_inventory():
             dealer_count = 0
             print(f"--- SCANNING: {dealer['name']} ---")
             
-            # Dynamic Referer Masking
             s.headers.update({
                 "Accept": "application/json, text/plain, */*",
                 "Accept-Language": "en-US,en;q=0.9",
@@ -36,11 +35,10 @@ def fetch_inventory():
                 max_attempts = 2
                 success = False
                 
-                # Base endpoint tracking parameters (Generational Array)
                 endpoints = [
                     f"https://www.{dealer['domain']}/apis/widget/INVENTORY_LISTING_DEFAULT_AUTO_NEW:inventory-data-bus1/getInventory?make=BMW&model={model_target}",
                     f"https://www.{dealer['domain']}/apis/widget/INVENTORY_LISTING_DEFAULT_AUTO_NEW:inventory-data-bus2/getInventory?make=BMW&model={model_target}",
-                    f"https://www.{dealer['domain']}/apis/widget/INVENTORY_LISTING_DEFAULT_AUTO_NEW:inventory-data-bus/getInventory?make=BMW&model={model_target}" # Weatherford Unified Target
+                    f"https://www.{dealer['domain']}/apis/widget/INVENTORY_LISTING_DEFAULT_AUTO_NEW:inventory-data-bus/getInventory?make=BMW&model={model_target}"
                 ]
                 
                 current_endpoint_idx = 0
@@ -50,31 +48,48 @@ def fetch_inventory():
                     try:
                         response = s.get(url, impersonate="chrome124", timeout=25)
                         
-                        # If legacy fails, iterate immediately to next endpoint signature
                         if response.status_code == 404:
                             current_endpoint_idx += 1
                             continue
 
                         if response.status_code == 200:
                             data = response.json()
+                            
+                            # STRATEGY A: Legacy Tracking Block Data Map
                             cars = data.get('pageInfo', {}).get('trackingData', [])
                             
+                            # STRATEGY B: Modern Unified Elasticsearch Payload Map (Weatherford)
+                            if not cars and 'vehicles' in data:
+                                cars = data.get('vehicles', [])
+                            if not cars and 'pageInfo' in data and 'vehicles' in data.get('pageInfo', {}):
+                                cars = data.get('pageInfo', {}).get('vehicles', [])
+
                             for car in cars:
-                                vin = car.get('vin', 'N/A')
-                                model_str = car.get('model', '')
+                                # Normalizing variable access keys across generations
+                                vin = car.get('vin') or car.get('vinCode') or 'N/A'
+                                model_str = car.get('model') or car.get('modelName') or ''
                                 
                                 if vin.startswith('WBS') and not any(x in model_str for x in ["340", "440"]):
                                     type_tag = "M4" if "M4" in model_str else "M3"
-                                    raw_p = str(car.get('askingPrice', 'Call')).replace('$', '').replace(',', '').strip()
+                                    
+                                    # Extract price dynamically based on variable nesting
+                                    asking_p = car.get('askingPrice') or car.get('msrp') or car.get('internetPrice') or 'Call'
+                                    raw_p = str(asking_p).replace('$', '').replace(',', '').strip()
+                                    
+                                    # Extract paint color metadata mapping
+                                    color_meta = car.get('exteriorColor') or car.get('extColor') or 'Check Dealer'
+                                    
+                                    # Identify delivery status values
+                                    in_transit = car.get('inTransit') or car.get('isTransit') or (car.get('status', '').upper() == 'IN_TRANSIT')
                                     
                                     found_vins[vin] = {
                                         "vin": vin,
-                                        "year": car.get('modelYear', '2026'),
-                                        "model": f"{type_tag} Competition" if 'Comp' in car.get('trim', '') else type_tag,
+                                        "year": str(car.get('modelYear') or car.get('year') or '2026'),
+                                        "model": f"{type_tag} Competition" if 'Comp' in str(car.get('trim', '') or car.get('trimName', '')) else type_tag,
                                         "price": f"${raw_p}" if raw_p.isdigit() else "Call",
-                                        "color": car.get('exteriorColor', 'Check Dealer'),
+                                        "color": color_meta,
                                         "dealer": dealer['name'],
-                                        "status": "In Transit" if car.get('inTransit') else "On Lot",
+                                        "status": "In Transit" if in_transit else "On Lot",
                                         "link": f"https://www.{dealer['domain']}/new/{vin}.htm"
                                     }
                                     dealer_count += 1
@@ -96,13 +111,12 @@ def fetch_inventory():
                         print(f" [!] Pipeline error at {dealer['name']} [{model_target}]: {e}")
                         success = True
                 
-                # Dynamic model striking throttle 
                 time.sleep(3.5)
             
             print(f" >> SQUADRON LOG: {dealer['name']} verified at [{dealer_count} UNITS]")
             time.sleep(2.0)
 
-    # OUTPUT COMPILATION
+    # OUTPUT DATA COMMITTAL
     if found_vins:
         output = {
             "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S PDT"),
