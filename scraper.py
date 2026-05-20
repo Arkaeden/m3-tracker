@@ -36,10 +36,12 @@ def fetch_inventory():
                 max_attempts = 3  
                 success = False
                 
+                # The 4-Tier Target Array (Including Weatherford's new ModelAndTrim taxonomy)
                 endpoints = [
                     f"https://www.{dealer['domain']}/apis/widget/INVENTORY_LISTING_DEFAULT_AUTO_NEW:inventory-data-bus1/getInventory?make=BMW&model={model_target}",
                     f"https://www.{dealer['domain']}/apis/widget/INVENTORY_LISTING_DEFAULT_AUTO_NEW:inventory-data-bus2/getInventory?make=BMW&model={model_target}",
-                    f"https://www.{dealer['domain']}/apis/widget/INVENTORY_LISTING_DEFAULT_AUTO_NEW:inventory-data-bus/getInventory?make=BMW&model={model_target}"
+                    f"https://www.{dealer['domain']}/apis/widget/INVENTORY_LISTING_DEFAULT_AUTO_NEW:inventory-data-bus/getInventory?make=BMW&model={model_target}",
+                    f"https://www.{dealer['domain']}/apis/widget/INVENTORY_LISTING_DEFAULT_AUTO_NEW:inventory-data-bus/getInventory?make=BMW&ModelAndTrim={model_target}"
                 ]
                 
                 current_endpoint_idx = 0
@@ -61,6 +63,11 @@ def fetch_inventory():
                                 cars = data.get('vehicles', [])
                             if not cars and 'pageInfo' in data and 'vehicles' in data.get('pageInfo', {}):
                                 cars = data.get('pageInfo', {}).get('vehicles', [])
+
+                            # If payload is completely empty, move to the next structural variant to verify it's a true zero
+                            if not cars:
+                                current_endpoint_idx += 1
+                                continue
 
                             for car in cars:
                                 vin = car.get('vin') or car.get('vinCode') or 'N/A'
