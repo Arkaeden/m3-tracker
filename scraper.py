@@ -1,5 +1,5 @@
 import json
-import random  # NEW: Injects human-like unpredictability into the timing
+import random  
 from curl_cffi import requests
 from datetime import datetime
 import os
@@ -33,7 +33,7 @@ def fetch_inventory():
             
             for model_target in ["M3", "M4"]:
                 attempts = 0
-                max_attempts = 3  # UPGRADED: Allows for a deeper retry sequence
+                max_attempts = 3  
                 success = False
                 
                 endpoints = [
@@ -90,7 +90,6 @@ def fetch_inventory():
                         elif response.status_code == 429:
                             attempts += 1
                             if attempts < max_attempts:
-                                # EXPONENTIAL BACKOFF: Penalty increases severely on consecutive strikes
                                 penalty = (8.0 * attempts) + random.uniform(1.0, 3.0)
                                 print(f" [!] Rate limited by {dealer['name']}. Deploying evasion cool-off ({penalty:.1f}s)...")
                                 time.sleep(penalty)
@@ -102,4 +101,22 @@ def fetch_inventory():
                             success = True  
                             
                     except Exception as e:
-                        print(f" [!] Pipeline
+                        print(f" [!] Pipeline error at {dealer['name']} [{model_target}]: {e}")
+                        success = True
+                
+                time.sleep(random.uniform(4.0, 7.0))
+            
+            print(f" >> SQUADRON LOG: {dealer['name']} verified at [{dealer_count} UNITS]")
+            time.sleep(random.uniform(2.5, 4.5))
+
+    if found_vins:
+        output = {
+            "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S PDT"),
+            "vehicles": list(found_vins.values())
+        }
+        with open('data.json', 'w') as f:
+            json.dump(output, f, indent=4)
+        print(f"\nSUCCESS: {len(found_vins)} active allocations locked into data.json.")
+
+if __name__ == "__main__":
+    fetch_inventory()
