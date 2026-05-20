@@ -1,4 +1,5 @@
 import json
+import random  # NEW: Injects human-like unpredictability into the timing
 from curl_cffi import requests
 from datetime import datetime
 import os
@@ -32,7 +33,7 @@ def fetch_inventory():
             
             for model_target in ["M3", "M4"]:
                 attempts = 0
-                max_attempts = 2
+                max_attempts = 3  # UPGRADED: Allows for a deeper retry sequence
                 success = False
                 
                 endpoints = [
@@ -55,31 +56,22 @@ def fetch_inventory():
                         if response.status_code == 200:
                             data = response.json()
                             
-                            # STRATEGY A: Legacy Tracking Block Data Map
                             cars = data.get('pageInfo', {}).get('trackingData', [])
-                            
-                            # STRATEGY B: Modern Unified Elasticsearch Payload Map (Weatherford)
                             if not cars and 'vehicles' in data:
                                 cars = data.get('vehicles', [])
                             if not cars and 'pageInfo' in data and 'vehicles' in data.get('pageInfo', {}):
                                 cars = data.get('pageInfo', {}).get('vehicles', [])
 
                             for car in cars:
-                                # Normalizing variable access keys across generations
                                 vin = car.get('vin') or car.get('vinCode') or 'N/A'
                                 model_str = car.get('model') or car.get('modelName') or ''
                                 
                                 if vin.startswith('WBS') and not any(x in model_str for x in ["340", "440"]):
                                     type_tag = "M4" if "M4" in model_str else "M3"
                                     
-                                    # Extract price dynamically based on variable nesting
                                     asking_p = car.get('askingPrice') or car.get('msrp') or car.get('internetPrice') or 'Call'
                                     raw_p = str(asking_p).replace('$', '').replace(',', '').strip()
-                                    
-                                    # Extract paint color metadata mapping
                                     color_meta = car.get('exteriorColor') or car.get('extColor') or 'Check Dealer'
-                                    
-                                    # Identify delivery status values
                                     in_transit = car.get('inTransit') or car.get('isTransit') or (car.get('status', '').upper() == 'IN_TRANSIT')
                                     
                                     found_vins[vin] = {
@@ -98,33 +90,16 @@ def fetch_inventory():
                         elif response.status_code == 429:
                             attempts += 1
                             if attempts < max_attempts:
-                                print(f" [!] Rate limited by {dealer['name']}. Deploying cool-off sequence (7s)...")
-                                time.sleep(7.0)
+                                # EXPONENTIAL BACKOFF: Penalty increases severely on consecutive strikes
+                                penalty = (8.0 * attempts) + random.uniform(1.0, 3.0)
+                                print(f" [!] Rate limited by {dealer['name']}. Deploying evasion cool-off ({penalty:.1f}s)...")
+                                time.sleep(penalty)
                             else:
-                                print(f" [!] Connection Terminated: {dealer['name']} blocked request after retry loop.")
+                                print(f" [!] Connection Terminated: {dealer['name']} blocked request after max retries.")
                                 success = True 
                         else:
                             print(f" [!] Request Bypass Refused: {dealer['name']} returned status code {response.status_code}")
                             success = True  
                             
                     except Exception as e:
-                        print(f" [!] Pipeline error at {dealer['name']} [{model_target}]: {e}")
-                        success = True
-                
-                time.sleep(3.5)
-            
-            print(f" >> SQUADRON LOG: {dealer['name']} verified at [{dealer_count} UNITS]")
-            time.sleep(2.0)
-
-    # OUTPUT DATA COMMITTAL
-    if found_vins:
-        output = {
-            "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S PDT"),
-            "vehicles": list(found_vins.values())
-        }
-        with open('data.json', 'w') as f:
-            json.dump(output, f, indent=4)
-        print(f"\nSUCCESS: {len(found_vins)} active allocations locked into data.json.")
-
-if __name__ == "__main__":
-    fetch_inventory()
+                        print(f" [!] Pipeline
