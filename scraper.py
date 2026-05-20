@@ -23,7 +23,7 @@ def fetch_inventory():
             dealer_count = 0
             print(f"--- SCANNING: {dealer['name']} ---")
             
-            # Dynamic Referer Spoofing: Matches the specific dealer's internal domain structure
+            # Dynamic Referer Masking
             s.headers.update({
                 "Accept": "application/json, text/plain, */*",
                 "Accept-Language": "en-US,en;q=0.9",
@@ -32,26 +32,28 @@ def fetch_inventory():
             })
             
             for model_target in ["M3", "M4"]:
-                # Primary modern widget path configuration
-                url = f"https://www.{dealer['domain']}/apis/widget/INVENTORY_LISTING_DEFAULT_AUTO_NEW:inventory-data-bus1/getInventory?make=BMW&model={model_target}"
-                
                 attempts = 0
                 max_attempts = 2
                 success = False
                 
-                while attempts < max_attempts and not success:
+                # Base endpoint tracking parameters (Generational Array)
+                endpoints = [
+                    f"https://www.{dealer['domain']}/apis/widget/INVENTORY_LISTING_DEFAULT_AUTO_NEW:inventory-data-bus1/getInventory?make=BMW&model={model_target}",
+                    f"https://www.{dealer['domain']}/apis/widget/INVENTORY_LISTING_DEFAULT_AUTO_NEW:inventory-data-bus2/getInventory?make=BMW&model={model_target}",
+                    f"https://www.{dealer['domain']}/apis/widget/INVENTORY_LISTING_DEFAULT_AUTO_NEW:inventory-data-bus/getInventory?make=BMW&model={model_target}" # Weatherford Unified Target
+                ]
+                
+                current_endpoint_idx = 0
+                
+                while attempts < max_attempts and not success and current_endpoint_idx < len(endpoints):
+                    url = endpoints[current_endpoint_idx]
                     try:
                         response = s.get(url, impersonate="chrome124", timeout=25)
                         
-                        # Fallback mechanism if a dealer throws a 404 (Reroute to Bus2 setup)
+                        # If legacy fails, iterate immediately to next endpoint signature
                         if response.status_code == 404:
-                            url = f"https://www.{dealer['domain']}/apis/widget/INVENTORY_LISTING_DEFAULT_AUTO_NEW:inventory-data-bus2/getInventory?make=BMW&model={model_target}"
-                            response = s.get(url, impersonate="chrome124", timeout=25)
-                        
-                        # Fallback mechanism if a dealer throws a second 404 (Reroute to alternative corporate endpoint)
-                        if response.status_code == 404:
-                            url = f"https://www.{dealer['domain']}/apis/widget/INVENTORY_LISTING_DEFAULT_AUTO_NEW:inventory-data-bus3/getInventory?make=BMW&model={model_target}"
-                            response = s.get(url, impersonate="chrome124", timeout=25)
+                            current_endpoint_idx += 1
+                            continue
 
                         if response.status_code == 200:
                             data = response.json()
@@ -85,15 +87,16 @@ def fetch_inventory():
                                 time.sleep(7.0)
                             else:
                                 print(f" [!] Connection Terminated: {dealer['name']} blocked request after retry loop.")
+                                success = True 
                         else:
                             print(f" [!] Request Bypass Refused: {dealer['name']} returned status code {response.status_code}")
-                            success = True  # Break out of loop for non-429 errors
+                            success = True  
                             
                     except Exception as e:
                         print(f" [!] Pipeline error at {dealer['name']} [{model_target}]: {e}")
                         success = True
                 
-                # Standard throttle safety window between model changes
+                # Dynamic model striking throttle 
                 time.sleep(3.5)
             
             print(f" >> SQUADRON LOG: {dealer['name']} verified at [{dealer_count} UNITS]")
