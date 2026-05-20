@@ -86,26 +86,47 @@
         
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-        @media (max-width: 1024px) {
-            .pane-header { gap: 12px; }
-            .header-subtitle { display: none; } 
-        }
-        @media (max-width: 768px) {
-            .pane-header { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 24px; padding-bottom: 24px; }
-            .header-brand, .header-metrics, .header-status { justify-self: center; text-align: center; align-items: center; }
-            .header-status { flex-direction: row; gap: 16px; margin-top: 8px; }
+        /* ============================================================
+           INTERACTIVE MAP VIEWPORT COMPONENT
+           ============================================================ */
+        .map-viewport-wrapper {
+            position: relative;
+            width: 100%;
+            margin-bottom: 40px;
         }
 
-        /* ============================================================
-           INTERACTIVE MAP HERO 
-           ============================================================ */
         #telemetry-map {
             width: 100%;
-            height: 280px;
+            height: 310px;
             background: var(--srf-1);
             border: 1px solid var(--border);
-            margin-bottom: 40px;
-            z-index: 1; /* Keep below modal layers if any */
+            z-index: 1;
+        }
+
+        /* Floating Pacific Ocean Text Overlay */
+        .map-intro-overlay {
+            position: absolute;
+            top: 32px;
+            left: 32px;
+            max-width: 340px;
+            z-index: 999;
+            pointer-events: none; /* Allows user to drag map behind text */
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .overlay-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.05em;
+            color: var(--white);
+        }
+        .overlay-body {
+            font-family: 'Space Mono', monospace;
+            font-size: 10px;
+            line-height: 1.6;
+            color: var(--gray-text);
         }
         
         /* Custom UI Pins on the Map */
@@ -125,9 +146,28 @@
         
         /* Override Leaflet Defaults to match UI */
         .leaflet-container { background: var(--srf-1); font-family: inherit; }
-        .leaflet-control-attribution { display: none; } /* Clean presentation */
+        .leaflet-control-attribution { display: none; } 
         .leaflet-bar a { background-color: var(--srf-2) !important; color: var(--white) !important; border-bottom: 1px solid var(--border) !important; }
         .leaflet-bar { border: 1px solid var(--border) !important; }
+
+        /* ============================================================
+           BREAKPOINTS
+           ============================================================ */
+        @media (max-width: 1024px) {
+            .pane-header { gap: 12px; }
+            .header-subtitle { display: none; } 
+        }
+
+        @media (max-width: 768px) {
+            .pane-header { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 24px; padding-bottom: 24px; }
+            .header-brand, .header-metrics, .header-status { justify-self: center; text-align: center; align-items: center; }
+            .header-status { flex-direction: row; gap: 16px; margin-top: 8px; }
+            
+            /* Un-float overlay to prevent masking on narrow viewports */
+            .map-viewport-wrapper { display: flex; flex-direction: column; gap: 16px; }
+            .map-intro-overlay { position: relative; top: 0; left: 0; max-width: 100%; padding: 0 8px; }
+            #telemetry-map { height: 240px; }
+        }
 
         /* GALLERY GRID */
         .alternates-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; margin-bottom: 48px; }
@@ -179,7 +219,13 @@
             </div>
         </header>
 
-        <div id="telemetry-map"></div>
+        <div class="map-viewport-wrapper">
+            <div class="map-intro-overlay">
+                <div class="overlay-title">BAY AREA ALLOCATION INDEX</div>
+                <div class="overlay-body">A real-time, consolidated registry of available BMW M3 and M4 inventory. Built to track, verify, and display high-demand units with zero latency.</div>
+            </div>
+            <div id="telemetry-map"></div>
+        </div>
 
         <main class="alternates-grid" id="gallery">
             <div style="grid-column: 1 / -1; display: flex; align-items: center; gap: 12px; color: var(--gray-text); font-size: 11px; letter-spacing: 0.05em;">
@@ -258,15 +304,14 @@
             document.getElementById('last-updated').innerText = `SYS.UPDATE: ${data.timestamp}`;
             const gallery = document.getElementById('gallery');
             
-            // MAP INITIALIZATION
+            // GEOGRAPHIC BOUNDS COMPENSATOR: Shifting center West to -122.42 offsets the map cluster East
             const map = L.map('telemetry-map', {
-                center: [37.60, -122.05], // Center of the Bay Area
+                center: [37.64, -122.42], 
                 zoom: 9,
                 zoomControl: false,
                 scrollWheelZoom: false
             });
 
-            // CARTO DB DARK MATTER LAYER - High contrast, minimal, 0 cost
             L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
                 maxZoom: 19
             }).addTo(map);
@@ -279,7 +324,7 @@
 
             let m3Count = 0;
             let m4Count = 0;
-            let dealerInventoryCount = {}; // Object to track cars per dealership
+            let dealerInventoryCount = {}; 
 
             data.vehicles.forEach(car => {
                 let safeImageUrl = fallbackImage; 
@@ -289,7 +334,6 @@
 
                 if (modelKey === 'M4') m4Count++; else m3Count++;
                 
-                // Track total allocation count for the map pin per dealer
                 if (dealerInventoryCount[car.dealer]) {
                     dealerInventoryCount[car.dealer]++;
                 } else {
@@ -333,11 +377,10 @@
             document.getElementById('m3-count').innerText = m3Count.toString().padStart(2, '0');
             document.getElementById('m4-count').innerText = m4Count.toString().padStart(2, '0');
 
-            // POPULATE MAP WITH DYNAMIC DEALER PINS
+            // MAP INVENTORY PIN DISTRIBUTION
             for (const [dealerName, coords] of Object.entries(dealerCoordinates)) {
-                const stockCount = dealerInventoryCount[dealerName] || 0; // Show 0 if out of stock
+                const stockCount = dealerInventoryCount[dealerName] || 0; 
                 
-                // Create custom HTML pin styling
                 const customIcon = L.divIcon({
                     className: 'custom-div-icon',
                     html: `<div class="dealer-pin">${dealerName.replace('BMW', '').replace('of ', '').trim()} <span>${stockCount}</span></div>`,
