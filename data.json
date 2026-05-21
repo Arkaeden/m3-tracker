@@ -1,5 +1,5 @@
 {
-    "timestamp": "2026-05-20 19:58:14 PDT",
+    "timestamp": "2026-05-21 11:59:25 PDT",
     "vehicles": [
         {
             "vin": "WBS13HJ07VFW72370",
@@ -130,56 +130,6 @@
             "dealer": "Stevens Creek BMW",
             "status": "On Lot",
             "link": "https://www.stevenscreekbmw.com/new/WBS33HK09VCY18793.htm"
-        },
-        {
-            "vin": "WBS33HJ04TFW12875",
-            "year": "2026",
-            "model": "M3 Competition",
-            "price": "$96710",
-            "color": "Sao Paulo Yellow",
-            "dealer": "BMW of Mountain View",
-            "status": "On Lot",
-            "link": "https://www.bmwofmountainview.com/new/WBS33HJ04TFW12875.htm"
-        },
-        {
-            "vin": "WBS13HJ03VFW73628",
-            "year": "2027",
-            "model": "M3",
-            "price": "$88835",
-            "color": "Portimao Blue",
-            "dealer": "BMW of Mountain View",
-            "status": "In Transit",
-            "link": "https://www.bmwofmountainview.com/new/WBS13HJ03VFW73628.htm"
-        },
-        {
-            "vin": "WBS13HJ0XVFX03708",
-            "year": "2027",
-            "model": "M3",
-            "price": "$91585",
-            "color": "Alpine White",
-            "dealer": "BMW of Mountain View",
-            "status": "In Transit",
-            "link": "https://www.bmwofmountainview.com/new/WBS13HJ0XVFX03708.htm"
-        },
-        {
-            "vin": "WBS33HJ04VFX04815",
-            "year": "2027",
-            "model": "M3 Competition",
-            "price": "$98900",
-            "color": "Dravit Gray",
-            "dealer": "BMW of Mountain View",
-            "status": "In Transit",
-            "link": "https://www.bmwofmountainview.com/new/WBS33HJ04VFX04815.htm"
-        },
-        {
-            "vin": "WBS33HJ06VFW83353",
-            "year": "2027",
-            "model": "M3 Competition",
-            "price": "$99185",
-            "color": "Aventurin Red",
-            "dealer": "BMW of Mountain View",
-            "status": "In Transit",
-            "link": "https://www.bmwofmountainview.com/new/WBS33HJ06VFW83353.htm"
         },
         {
             "vin": "WBS13HK05TCW78715",
