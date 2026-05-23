@@ -1,5 +1,5 @@
 {
-    "timestamp": "2026-05-23 08:35:30 PDT",
+    "timestamp": "2026-05-23 15:49:54 PDT",
     "vehicles": [
         {
             "vin": "WBS13HJ07VFW72370",
@@ -70,6 +70,26 @@
             "dealer": "East Bay BMW",
             "status": "In Transit",
             "link": "https://www.eastbaybmw.com/new/WBS43BA0XVCY37629.htm"
+        },
+        {
+            "vin": "WBS13HJ05TFW44032",
+            "year": "2026",
+            "model": "M3",
+            "price": "$82925",
+            "color": "Alpine White",
+            "dealer": "Stevens Creek BMW",
+            "status": "On Lot",
+            "link": "https://www.stevenscreekbmw.com/new/WBS13HJ05TFW44032.htm"
+        },
+        {
+            "vin": "WBS23HJ07VFW68579",
+            "year": "2027",
+            "model": "M3 Competition",
+            "price": "$96115",
+            "color": "Black Sapphire",
+            "dealer": "Stevens Creek BMW",
+            "status": "In Transit",
+            "link": "https://www.stevenscreekbmw.com/new/WBS23HJ07VFW68579.htm"
         },
         {
             "vin": "WBS43BA02TCX08152",
