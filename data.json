@@ -1,26 +1,6 @@
 {
-    "timestamp": "2026-05-24 15:50:27 PDT",
+    "timestamp": "2026-05-24 21:17:22 PDT",
     "vehicles": [
-        {
-            "vin": "WBS13HJ07VFW72370",
-            "year": "2027",
-            "model": "M3",
-            "price": "Call",
-            "color": "Portimao Blue",
-            "dealer": "BMW Concord",
-            "status": "In Transit",
-            "link": "https://www.bmwconcord.com/new/WBS13HJ07VFW72370.htm"
-        },
-        {
-            "vin": "WBS23HJ04VFW72234",
-            "year": "2027",
-            "model": "M3 Competition",
-            "price": "$92433",
-            "color": "Skyscraper Grey Metallic",
-            "dealer": "East Bay BMW",
-            "status": "In Transit",
-            "link": "https://www.eastbaybmw.com/new/WBS23HJ04VFW72234.htm"
-        },
         {
             "vin": "WBS23HK02VCY23278",
             "year": "2027",
@@ -70,26 +50,6 @@
             "dealer": "East Bay BMW",
             "status": "In Transit",
             "link": "https://www.eastbaybmw.com/new/WBS43BA0XVCY37629.htm"
-        },
-        {
-            "vin": "WBS13HJ05TFW44032",
-            "year": "2026",
-            "model": "M3",
-            "price": "$82925",
-            "color": "Alpine White",
-            "dealer": "Stevens Creek BMW",
-            "status": "On Lot",
-            "link": "https://www.stevenscreekbmw.com/new/WBS13HJ05TFW44032.htm"
-        },
-        {
-            "vin": "WBS23HJ07VFW68579",
-            "year": "2027",
-            "model": "M3 Competition",
-            "price": "$96115",
-            "color": "Black Sapphire",
-            "dealer": "Stevens Creek BMW",
-            "status": "In Transit",
-            "link": "https://www.stevenscreekbmw.com/new/WBS23HJ07VFW68579.htm"
         },
         {
             "vin": "WBS43BA02TCX08152",
@@ -400,6 +360,16 @@
             "dealer": "BMW Concord",
             "status": "On Lot",
             "link": "https://www.bmwconcord.com/new/WBS13HJ07TFW46543.htm"
+        },
+        {
+            "vin": "WBS13HJ07VFW72370",
+            "year": "2027",
+            "model": "M3",
+            "price": "Call",
+            "color": "Portimao Blue",
+            "dealer": "BMW Concord",
+            "status": "In Transit",
+            "link": "https://www.bmwconcord.com/new/WBS13HJ07VFW72370.htm"
         },
         {
             "vin": "WBS23HJ00VFW89726",
