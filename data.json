@@ -1,5 +1,5 @@
 {
-    "timestamp": "2026-06-03 00:15:52 PDT",
+    "timestamp": "2026-06-03 20:01:35 PDT",
     "vehicles": [
         {
             "vin": "WBS13HJ06VFX13247",
@@ -400,16 +400,6 @@
             "dealer": "BMW Concord",
             "status": "In Transit",
             "link": "https://www.bmwconcord.com/new/WBS33HJ01VFW90193.htm"
-        },
-        {
-            "vin": "WBS33HJ07VFW79408",
-            "year": "2027",
-            "model": "M3 Competition",
-            "price": "Call",
-            "color": "Black Sapphire",
-            "dealer": "BMW Concord",
-            "status": "In Transit",
-            "link": "https://www.bmwconcord.com/new/WBS33HJ07VFW79408.htm"
         },
         {
             "vin": "WBS33HJ08VFW90823",
