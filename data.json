@@ -1,5 +1,5 @@
 {
-    "timestamp": "2026-06-05 18:32:05 PDT",
+    "timestamp": "2026-06-06 09:15:17 PDT",
     "vehicles": [
         {
             "vin": "WBS13HJ06VFX13247",
@@ -140,16 +140,6 @@
             "dealer": "Stevens Creek BMW",
             "status": "In Transit",
             "link": "https://www.stevenscreekbmw.com/new/WBS33HK09VCY18793.htm"
-        },
-        {
-            "vin": "WBS13HJ03VFW73628",
-            "year": "2027",
-            "model": "M3",
-            "price": "$88835",
-            "color": "Portimao Blue",
-            "dealer": "BMW of Mountain View",
-            "status": "On Lot",
-            "link": "https://www.bmwofmountainview.com/new/WBS13HJ03VFW73628.htm"
         },
         {
             "vin": "WBS13HJ0XVFX03708",
