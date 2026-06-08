@@ -1,16 +1,6 @@
 {
-    "timestamp": "2026-06-07 21:53:48 PDT",
+    "timestamp": "2026-06-08 14:43:15 PDT",
     "vehicles": [
-        {
-            "vin": "WBS23HJ04VFW72234",
-            "year": "2027",
-            "model": "M3 Competition",
-            "price": "$92433",
-            "color": "Skyscraper Grey Metallic",
-            "dealer": "East Bay BMW",
-            "status": "On Lot",
-            "link": "https://www.eastbaybmw.com/new/WBS23HJ04VFW72234.htm"
-        },
         {
             "vin": "WBS13HJ06VFX13247",
             "year": "2027",
