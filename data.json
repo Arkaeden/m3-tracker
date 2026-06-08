@@ -1,5 +1,5 @@
 {
-    "timestamp": "2026-06-08 14:43:15 PDT",
+    "timestamp": "2026-06-08 23:04:36 PDT",
     "vehicles": [
         {
             "vin": "WBS13HJ06VFX13247",
@@ -220,16 +220,6 @@
             "dealer": "BMW of Mountain View",
             "status": "In Transit",
             "link": "https://www.bmwofmountainview.com/new/WBS43BA05VCY43161.htm"
-        },
-        {
-            "vin": "WBS23HJ05VFX07945",
-            "year": "2027",
-            "model": "M3 Competition",
-            "price": "$92285",
-            "color": "Sao Paulo Yellow",
-            "dealer": "BMW of Fremont",
-            "status": "In Transit",
-            "link": "https://www.bmwoffremont.com/new/WBS23HJ05VFX07945.htm"
         },
         {
             "vin": "WBS13HJ06VFW96451",
