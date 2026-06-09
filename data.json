@@ -1,6 +1,26 @@
 {
-    "timestamp": "2026-06-09 11:48:57 PDT",
+    "timestamp": "2026-06-09 19:38:27 PDT",
     "vehicles": [
+        {
+            "vin": "WBS13HJ06VFX13247",
+            "year": "2027",
+            "model": "M3",
+            "price": "$87648",
+            "color": "Black Sapphire Metallic",
+            "dealer": "East Bay BMW",
+            "status": "In Transit",
+            "link": "https://www.eastbaybmw.com/new/WBS13HJ06VFX13247.htm"
+        },
+        {
+            "vin": "WBS13HJ07VFW72370",
+            "year": "2027",
+            "model": "M3",
+            "price": "$90583",
+            "color": "Portimao Blue Metallic",
+            "dealer": "East Bay BMW",
+            "status": "In Transit",
+            "link": "https://www.eastbaybmw.com/new/WBS13HJ07VFW72370.htm"
+        },
         {
             "vin": "WBS23HK02VCY23278",
             "year": "2027",
@@ -102,6 +122,86 @@
             "link": "https://www.stevenscreekbmw.com/new/WBS33HK06VCY15141.htm"
         },
         {
+            "vin": "WBS13HJ0XVFX03708",
+            "year": "2027",
+            "model": "M3",
+            "price": "$91585",
+            "color": "Alpine White",
+            "dealer": "BMW of Mountain View",
+            "status": "In Transit",
+            "link": "https://www.bmwofmountainview.com/new/WBS13HJ0XVFX03708.htm"
+        },
+        {
+            "vin": "WBS23HJ01VFW96796",
+            "year": "2027",
+            "model": "M3 Competition",
+            "price": "$95385",
+            "color": "Isle of Man Green",
+            "dealer": "BMW of Mountain View",
+            "status": "In Transit",
+            "link": "https://www.bmwofmountainview.com/new/WBS23HJ01VFW96796.htm"
+        },
+        {
+            "vin": "WBS33HJ04TFW12875",
+            "year": "2026",
+            "model": "M3 Competition",
+            "price": "$96710",
+            "color": "Sao Paulo Yellow",
+            "dealer": "BMW of Mountain View",
+            "status": "In Transit",
+            "link": "https://www.bmwofmountainview.com/new/WBS33HJ04TFW12875.htm"
+        },
+        {
+            "vin": "WBS33HJ06VFW83353",
+            "year": "2027",
+            "model": "M3 Competition",
+            "price": "$99185",
+            "color": "Aventurin Red",
+            "dealer": "BMW of Mountain View",
+            "status": "In Transit",
+            "link": "https://www.bmwofmountainview.com/new/WBS33HJ06VFW83353.htm"
+        },
+        {
+            "vin": "WBS33HJ03VFW92933",
+            "year": "2027",
+            "model": "M3 Competition",
+            "price": "$101085",
+            "color": "Dravit Gray",
+            "dealer": "BMW of Mountain View",
+            "status": "In Transit",
+            "link": "https://www.bmwofmountainview.com/new/WBS33HJ03VFW92933.htm"
+        },
+        {
+            "vin": "WBS33HJ04VFW94755",
+            "year": "2027",
+            "model": "M3 Competition",
+            "price": "$105935",
+            "color": "Frozen Pure Gray II",
+            "dealer": "BMW of Mountain View",
+            "status": "In Transit",
+            "link": "https://www.bmwofmountainview.com/new/WBS33HJ04VFW94755.htm"
+        },
+        {
+            "vin": "WBS33HK00TCX31068",
+            "year": "2026",
+            "model": "M4 Competition",
+            "price": "$100305",
+            "color": "Sao Paulo Yellow",
+            "dealer": "BMW of Mountain View",
+            "status": "On Lot",
+            "link": "https://www.bmwofmountainview.com/new/WBS33HK00TCX31068.htm"
+        },
+        {
+            "vin": "WBS43BA05VCY43161",
+            "year": "2027",
+            "model": "M4 Competition",
+            "price": "$108785",
+            "color": "Portimao Blue",
+            "dealer": "BMW of Mountain View",
+            "status": "In Transit",
+            "link": "https://www.bmwofmountainview.com/new/WBS43BA05VCY43161.htm"
+        },
+        {
             "vin": "WBS13HJ06VFW96451",
             "year": "2027",
             "model": "M3",
@@ -152,64 +252,154 @@
             "link": "https://www.bmwoffremont.com/new/WBS33HJ00VFW87026.htm"
         },
         {
-            "vin": "WBS13HJ07TFW46543",
+            "vin": "WBS13HK05TCW66029",
             "year": "2026",
-            "model": "M3",
+            "model": "M4",
+            "price": "$90770",
+            "color": "Alpine White",
+            "dealer": "BMW of Fremont",
+            "status": "On Lot",
+            "link": "https://www.bmwoffremont.com/new/WBS13HK05TCW66029.htm"
+        },
+        {
+            "vin": "WBS33HK01TCX10715",
+            "year": "2026",
+            "model": "M4 Competition",
+            "price": "$101325",
+            "color": "Special Order Color",
+            "dealer": "BMW of Fremont",
+            "status": "On Lot",
+            "link": "https://www.bmwoffremont.com/new/WBS33HK01TCX10715.htm"
+        },
+        {
+            "vin": "WBS43BA01TCX25542",
+            "year": "2026",
+            "model": "M4 Competition",
+            "price": "$107385",
+            "color": "Alpine White",
+            "dealer": "BMW of Fremont",
+            "status": "On Lot",
+            "link": "https://www.bmwoffremont.com/new/WBS43BA01TCX25542.htm"
+        },
+        {
+            "vin": "WBS13HK08TCX53925",
+            "year": "2026",
+            "model": "M4",
+            "price": "$116155",
+            "color": "Special Order Color",
+            "dealer": "BMW of Fremont",
+            "status": "On Lot",
+            "link": "https://www.bmwoffremont.com/new/WBS13HK08TCX53925.htm"
+        },
+        {
+            "vin": "WBS13HK04VCY37551",
+            "year": "2027",
+            "model": "M4",
+            "price": "$91645",
+            "color": "Special Order Color",
+            "dealer": "BMW of Fremont",
+            "status": "In Transit",
+            "link": "https://www.bmwoffremont.com/new/WBS13HK04VCY37551.htm"
+        },
+        {
+            "vin": "WBS13HK0XVCY23167",
+            "year": "2027",
+            "model": "M4",
+            "price": "$92545",
+            "color": "Tanzanite Blue II",
+            "dealer": "BMW of Fremont",
+            "status": "In Transit",
+            "link": "https://www.bmwoffremont.com/new/WBS13HK0XVCY23167.htm"
+        },
+        {
+            "vin": "WBS33HK07VCY49945",
+            "year": "2027",
+            "model": "M4 Competition",
+            "price": "$99435",
+            "color": "Brooklyn Gray",
+            "dealer": "BMW of Fremont",
+            "status": "In Transit",
+            "link": "https://www.bmwoffremont.com/new/WBS33HK07VCY49945.htm"
+        },
+        {
+            "vin": "WBS33HK05VCY30939",
+            "year": "2027",
+            "model": "M4 Competition",
+            "price": "$101150",
+            "color": "Black Sapphire",
+            "dealer": "BMW of Fremont",
+            "status": "In Transit",
+            "link": "https://www.bmwoffremont.com/new/WBS33HK05VCY30939.htm"
+        },
+        {
+            "vin": "WBS33HK08VCY01693",
+            "year": "2027",
+            "model": "M4 Competition",
+            "price": "$105235",
+            "color": "Dravit Gray",
+            "dealer": "BMW of Fremont",
+            "status": "In Transit",
+            "link": "https://www.bmwoffremont.com/new/WBS33HK08VCY01693.htm"
+        },
+        {
+            "vin": "WBS13HK09TCX43047",
+            "year": "2026",
+            "model": "M4",
             "price": "Call",
-            "color": "San Marino Blue",
+            "color": "Black Sapphire",
             "dealer": "BMW Concord",
             "status": "On Lot",
-            "link": "https://www.bmwconcord.com/new/WBS13HJ07TFW46543.htm"
+            "link": "https://www.bmwconcord.com/new/WBS13HK09TCX43047.htm"
         },
         {
-            "vin": "WBS13HJ07VFW72370",
-            "year": "2027",
-            "model": "M3",
+            "vin": "WBS13HK07TCW49247",
+            "year": "2026",
+            "model": "M4",
             "price": "Call",
-            "color": "Portimao Blue",
+            "color": "Tanzanite Blue II Metallic",
             "dealer": "BMW Concord",
             "status": "In Transit",
-            "link": "https://www.bmwconcord.com/new/WBS13HJ07VFW72370.htm"
+            "link": "https://www.bmwconcord.com/new/WBS13HK07TCW49247.htm"
         },
         {
-            "vin": "WBS23HJ00VFW89726",
+            "vin": "WBS13HK00VCY13943",
             "year": "2027",
-            "model": "M3 Competition",
+            "model": "M4",
+            "price": "Call",
+            "color": "Grey",
+            "dealer": "BMW Concord",
+            "status": "In Transit",
+            "link": "https://www.bmwconcord.com/new/WBS13HK00VCY13943.htm"
+        },
+        {
+            "vin": "WBS23HK09VCY33970",
+            "year": "2027",
+            "model": "M4 Competition",
             "price": "Call",
             "color": "Gray Metallic",
             "dealer": "BMW Concord",
             "status": "In Transit",
-            "link": "https://www.bmwconcord.com/new/WBS23HJ00VFW89726.htm"
+            "link": "https://www.bmwconcord.com/new/WBS23HK09VCY33970.htm"
         },
         {
-            "vin": "WBS33HJ01VFW90193",
+            "vin": "WBS33HK07VCY17674",
             "year": "2027",
-            "model": "M3 Competition",
+            "model": "M4 Competition",
             "price": "Call",
-            "color": "Skyscraper Gray",
+            "color": "Grey",
             "dealer": "BMW Concord",
             "status": "In Transit",
-            "link": "https://www.bmwconcord.com/new/WBS33HJ01VFW90193.htm"
+            "link": "https://www.bmwconcord.com/new/WBS33HK07VCY17674.htm"
         },
         {
-            "vin": "WBS33HJ08VFW90823",
-            "year": "2027",
-            "model": "M3 Competition",
+            "vin": "WBS33HK05TCX61909",
+            "year": "2026",
+            "model": "M4 Competition",
             "price": "Call",
-            "color": "Tanzanite Blue II",
+            "color": "Tanzanite Blue II Metallic",
             "dealer": "BMW Concord",
             "status": "In Transit",
-            "link": "https://www.bmwconcord.com/new/WBS33HJ08VFW90823.htm"
-        },
-        {
-            "vin": "WBS33HJ08VFW82401",
-            "year": "2027",
-            "model": "M3 Competition",
-            "price": "Call",
-            "color": "Tanzanite Blue II",
-            "dealer": "BMW Concord",
-            "status": "In Transit",
-            "link": "https://www.bmwconcord.com/new/WBS33HJ08VFW82401.htm"
+            "link": "https://www.bmwconcord.com/new/WBS33HK05TCX61909.htm"
         }
     ]
 }
