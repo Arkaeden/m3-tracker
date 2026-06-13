@@ -1,5 +1,5 @@
 {
-    "timestamp": "2026-06-13 03:33:15 PDT",
+    "timestamp": "2026-06-13 08:57:37 PDT",
     "vehicles": [
         {
             "vin": "WBS13HJ09VFX15994",
@@ -300,16 +300,6 @@
             "dealer": "BMW of Fremont",
             "status": "In Transit",
             "link": "https://www.bmwoffremont.com/new/WBS23HJ07VFX11995.htm"
-        },
-        {
-            "vin": "WBS33HJ00VFW87026",
-            "year": "2027",
-            "model": "M3 Competition",
-            "price": "$100000",
-            "color": "Alpine White",
-            "dealer": "BMW of Fremont",
-            "status": "In Transit",
-            "link": "https://www.bmwoffremont.com/new/WBS33HJ00VFW87026.htm"
         },
         {
             "vin": "WBS13HK05TCW66029",
