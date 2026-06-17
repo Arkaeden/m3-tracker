@@ -1,5 +1,5 @@
 {
-    "timestamp": "2026-06-16 20:49:46 PDT",
+    "timestamp": "2026-06-17 03:57:23 PDT",
     "vehicles": [
         {
             "vin": "WBS13HJ09VFX15994",
@@ -26,7 +26,7 @@
             "year": "2027",
             "model": "M3",
             "price": "Call",
-            "color": "Portimao Blue",
+            "color": "Blue Metallic",
             "dealer": "BMW Concord",
             "status": "On Lot",
             "link": "https://www.bmwconcord.com/new/WBS13HJ07VFW72370.htm"
@@ -110,6 +110,16 @@
             "dealer": "Stevens Creek BMW",
             "status": "On Lot",
             "link": "https://www.stevenscreekbmw.com/new/WBS13HJ05TFW44032.htm"
+        },
+        {
+            "vin": "WBS33HJ06VFW78105",
+            "year": "2027",
+            "model": "M3 Competition",
+            "price": "$98450",
+            "color": "Check Dealer",
+            "dealer": "Stevens Creek BMW",
+            "status": "On Lot",
+            "link": "https://www.stevenscreekbmw.com/new/WBS33HJ06VFW78105.htm"
         },
         {
             "vin": "WBS43BA02TCX08152",
