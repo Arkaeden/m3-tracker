@@ -1,36 +1,6 @@
 {
-    "timestamp": "2026-06-18 10:20:13 PDT",
+    "timestamp": "2026-06-18 15:22:39 PDT",
     "vehicles": [
-        {
-            "vin": "WBS13HJ09VFX15994",
-            "year": "2027",
-            "model": "M3",
-            "price": "$87148",
-            "color": "Skyscraper Grey Metallic",
-            "dealer": "East Bay BMW",
-            "status": "In Transit",
-            "link": "https://www.eastbaybmw.com/new/WBS13HJ09VFX15994.htm"
-        },
-        {
-            "vin": "WBS13HJ06VFX13247",
-            "year": "2027",
-            "model": "M3",
-            "price": "$87648",
-            "color": "Black Sapphire Metallic",
-            "dealer": "East Bay BMW",
-            "status": "In Transit",
-            "link": "https://www.eastbaybmw.com/new/WBS13HJ06VFX13247.htm"
-        },
-        {
-            "vin": "WBS13HJ07VFW72370",
-            "year": "2027",
-            "model": "M3",
-            "price": "Call",
-            "color": "Blue Metallic",
-            "dealer": "BMW Concord",
-            "status": "On Lot",
-            "link": "https://www.bmwconcord.com/new/WBS13HJ07VFW72370.htm"
-        },
         {
             "vin": "WBS23HK02VCY23278",
             "year": "2027",
@@ -390,6 +360,16 @@
             "dealer": "BMW of Fremont",
             "status": "In Transit",
             "link": "https://www.bmwoffremont.com/new/WBS33HK08VCY01693.htm"
+        },
+        {
+            "vin": "WBS13HJ07VFW72370",
+            "year": "2027",
+            "model": "M3",
+            "price": "Call",
+            "color": "Blue Metallic",
+            "dealer": "BMW Concord",
+            "status": "On Lot",
+            "link": "https://www.bmwconcord.com/new/WBS13HJ07VFW72370.htm"
         },
         {
             "vin": "WBS13HJ07TFW46543",
