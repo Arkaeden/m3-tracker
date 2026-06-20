@@ -1,5 +1,5 @@
 {
-    "timestamp": "2026-06-20 03:30:23 PDT",
+    "timestamp": "2026-06-20 08:54:25 PDT",
     "vehicles": [
         {
             "vin": "WBS13HJ09VFX15994",
@@ -338,7 +338,7 @@
             "price": "$93535",
             "color": "Isle of Man Green",
             "dealer": "BMW of Fremont",
-            "status": "In Transit",
+            "status": "On Lot",
             "link": "https://www.bmwoffremont.com/new/WBS13HJ06VFW96451.htm"
         },
         {
