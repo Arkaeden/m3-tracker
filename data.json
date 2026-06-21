@@ -1,5 +1,5 @@
 {
-    "timestamp": "2026-06-21 09:49:17 PDT",
+    "timestamp": "2026-06-21 14:08:46 PDT",
     "vehicles": [
         {
             "vin": "WBS13HJ09VFX15994",
@@ -30,66 +30,6 @@
             "dealer": "BMW Concord",
             "status": "On Lot",
             "link": "https://www.bmwconcord.com/new/WBS13HJ07VFW72370.htm"
-        },
-        {
-            "vin": "WBS23HK02VCY23278",
-            "year": "2027",
-            "model": "M4 Competition",
-            "price": "$91793",
-            "color": "Brooklyn Grey Metallic",
-            "dealer": "East Bay BMW",
-            "status": "In Transit",
-            "link": "https://www.eastbaybmw.com/new/WBS23HK02VCY23278.htm"
-        },
-        {
-            "vin": "WBS33HK06VCY31114",
-            "year": "2027",
-            "model": "M4 Competition",
-            "price": "$98648",
-            "color": "Dravit Grey Metallic",
-            "dealer": "East Bay BMW",
-            "status": "In Transit",
-            "link": "https://www.eastbaybmw.com/new/WBS33HK06VCY31114.htm"
-        },
-        {
-            "vin": "WBS33HK06VCY32361",
-            "year": "2027",
-            "model": "M4 Competition",
-            "price": "$99883",
-            "color": "Dravit Grey Metallic",
-            "dealer": "East Bay BMW",
-            "status": "In Transit",
-            "link": "https://www.eastbaybmw.com/new/WBS33HK06VCY32361.htm"
-        },
-        {
-            "vin": "WBS43BA05VCY37635",
-            "year": "2027",
-            "model": "M4 Competition",
-            "price": "$105743",
-            "color": "Alpine White",
-            "dealer": "East Bay BMW",
-            "status": "In Transit",
-            "link": "https://www.eastbaybmw.com/new/WBS43BA05VCY37635.htm"
-        },
-        {
-            "vin": "WBS43BA0XVCY37629",
-            "year": "2027",
-            "model": "M4 Competition",
-            "price": "$105843",
-            "color": "Black Sapphire Metallic",
-            "dealer": "East Bay BMW",
-            "status": "In Transit",
-            "link": "https://www.eastbaybmw.com/new/WBS43BA0XVCY37629.htm"
-        },
-        {
-            "vin": "WBS43BA0XVCY58271",
-            "year": "2027",
-            "model": "M4 Competition",
-            "price": "$108693",
-            "color": "Skyscraper Grey Metallic",
-            "dealer": "East Bay BMW",
-            "status": "In Transit",
-            "link": "https://www.eastbaybmw.com/new/WBS43BA0XVCY58271.htm"
         },
         {
             "vin": "WBS13HJ05TFW44032",
@@ -410,16 +350,6 @@
             "dealer": "BMW of Fremont",
             "status": "In Transit",
             "link": "https://www.bmwoffremont.com/new/WBS33HK05VCY30939.htm"
-        },
-        {
-            "vin": "WBS13HJ07TFW46543",
-            "year": "2026",
-            "model": "M3",
-            "price": "Call",
-            "color": "San Marino Blue",
-            "dealer": "BMW Concord",
-            "status": "On Lot",
-            "link": "https://www.bmwconcord.com/new/WBS13HJ07TFW46543.htm"
         },
         {
             "vin": "WBS23HJ00VFW89726",
