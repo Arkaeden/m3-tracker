@@ -1,5 +1,5 @@
 {
-    "timestamp": "2026-06-20 19:24:54 PDT",
+    "timestamp": "2026-06-21 04:01:57 PDT",
     "vehicles": [
         {
             "vin": "WBS13HJ09VFX15994",
@@ -100,36 +100,6 @@
             "dealer": "Stevens Creek BMW",
             "status": "On Lot",
             "link": "https://www.stevenscreekbmw.com/new/WBS13HJ05TFW44032.htm"
-        },
-        {
-            "vin": "WBS33HJ06VFW78105",
-            "year": "2027",
-            "model": "M3 Competition",
-            "price": "$98450",
-            "color": "Check Dealer",
-            "dealer": "Stevens Creek BMW",
-            "status": "On Lot",
-            "link": "https://www.stevenscreekbmw.com/new/WBS33HJ06VFW78105.htm"
-        },
-        {
-            "vin": "WBS13HJ08VFW88335",
-            "year": "2027",
-            "model": "M3",
-            "price": "$101120",
-            "color": "Toronto Red Metallic",
-            "dealer": "Stevens Creek BMW",
-            "status": "On Lot",
-            "link": "https://www.stevenscreekbmw.com/new/WBS13HJ08VFW88335.htm"
-        },
-        {
-            "vin": "WBS33HJ03VFW80958",
-            "year": "2027",
-            "model": "M3 Competition",
-            "price": "$100740",
-            "color": "Skyscraper Grey Metallic",
-            "dealer": "Stevens Creek BMW",
-            "status": "On Lot",
-            "link": "https://www.stevenscreekbmw.com/new/WBS33HJ03VFW80958.htm"
         },
         {
             "vin": "WBS23HJ08VFW73483",
