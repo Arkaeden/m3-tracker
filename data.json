@@ -1,5 +1,5 @@
 {
-    "timestamp": "2026-06-21 19:29:00 PDT",
+    "timestamp": "2026-06-22 04:02:14 PDT",
     "vehicles": [
         {
             "vin": "WBS13HJ09VFX15994",
@@ -120,16 +120,6 @@
             "dealer": "Stevens Creek BMW",
             "status": "On Lot",
             "link": "https://www.stevenscreekbmw.com/new/WBS43BA02TCX08152.htm"
-        },
-        {
-            "vin": "WBS13HK04TCW50226",
-            "year": "2026",
-            "model": "M4",
-            "price": "Call",
-            "color": "Isle of Man Green",
-            "dealer": "Stevens Creek BMW",
-            "status": "On Lot",
-            "link": "https://www.stevenscreekbmw.com/new/WBS13HK04TCW50226.htm"
         },
         {
             "vin": "WBS13HK00VCY09424",
