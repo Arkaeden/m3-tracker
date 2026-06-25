@@ -1,5 +1,5 @@
 {
-    "timestamp": "2026-06-25 14:30:26 PDT",
+    "timestamp": "2026-06-25 19:59:21 PDT",
     "vehicles": [
         {
             "vin": "WBS13HJ09VFX15994",
@@ -160,6 +160,36 @@
             "dealer": "Stevens Creek BMW",
             "status": "On Lot",
             "link": "https://www.stevenscreekbmw.com/new/WBS33HK00VCY58177.htm"
+        },
+        {
+            "vin": "WBS23HJ01VFW96796",
+            "year": "2027",
+            "model": "M3 Competition",
+            "price": "$95385",
+            "color": "Isle of Man Green",
+            "dealer": "BMW of Mountain View",
+            "status": "On Lot",
+            "link": "https://www.bmwofmountainview.com/new/WBS23HJ01VFW96796.htm"
+        },
+        {
+            "vin": "WBS33HJ03VFW92933",
+            "year": "2027",
+            "model": "M3 Competition",
+            "price": "$101085",
+            "color": "Dravit Gray",
+            "dealer": "BMW of Mountain View",
+            "status": "On Lot",
+            "link": "https://www.bmwofmountainview.com/new/WBS33HJ03VFW92933.htm"
+        },
+        {
+            "vin": "WBS33HJ04VFW94755",
+            "year": "2027",
+            "model": "M3 Competition",
+            "price": "$105935",
+            "color": "Frozen Pure Gray II",
+            "dealer": "BMW of Mountain View",
+            "status": "On Lot",
+            "link": "https://www.bmwofmountainview.com/new/WBS33HJ04VFW94755.htm"
         },
         {
             "vin": "WBS13HJ01VFX21711",
