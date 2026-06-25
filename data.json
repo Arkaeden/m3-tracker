@@ -1,5 +1,5 @@
 {
-    "timestamp": "2026-06-24 19:45:10 PDT",
+    "timestamp": "2026-06-25 03:00:41 PDT",
     "vehicles": [
         {
             "vin": "WBS13HJ09VFX15994",
@@ -202,16 +202,6 @@
             "link": "https://www.bmwofmountainview.com/new/WBS13HJ0XVFX03708.htm"
         },
         {
-            "vin": "WBS23HJ01VFW96796",
-            "year": "2027",
-            "model": "M3 Competition",
-            "price": "$95385",
-            "color": "Isle of Man Green",
-            "dealer": "BMW of Mountain View",
-            "status": "In Transit",
-            "link": "https://www.bmwofmountainview.com/new/WBS23HJ01VFW96796.htm"
-        },
-        {
             "vin": "WBS33HJ04VFX04815",
             "year": "2027",
             "model": "M3 Competition",
@@ -220,26 +210,6 @@
             "dealer": "BMW of Mountain View",
             "status": "In Transit",
             "link": "https://www.bmwofmountainview.com/new/WBS33HJ04VFX04815.htm"
-        },
-        {
-            "vin": "WBS33HJ03VFW92933",
-            "year": "2027",
-            "model": "M3 Competition",
-            "price": "$101085",
-            "color": "Dravit Gray",
-            "dealer": "BMW of Mountain View",
-            "status": "In Transit",
-            "link": "https://www.bmwofmountainview.com/new/WBS33HJ03VFW92933.htm"
-        },
-        {
-            "vin": "WBS33HJ04VFW94755",
-            "year": "2027",
-            "model": "M3 Competition",
-            "price": "$105935",
-            "color": "Frozen Pure Gray II",
-            "dealer": "BMW of Mountain View",
-            "status": "In Transit",
-            "link": "https://www.bmwofmountainview.com/new/WBS33HJ04VFW94755.htm"
         },
         {
             "vin": "WBS33HK00TCX31068",
@@ -422,14 +392,14 @@
             "link": "https://www.bmwconcord.com/new/WBS23HJ00VFW89726.htm"
         },
         {
-            "vin": "WBS33HJ01VFW90193",
+            "vin": "WBS23HJ03VFW72743",
             "year": "2027",
             "model": "M3 Competition",
             "price": "Call",
-            "color": "Skyscraper Grey Metallic",
+            "color": "Toronto Red Metallic",
             "dealer": "BMW Concord",
             "status": "In Transit",
-            "link": "https://www.bmwconcord.com/new/WBS33HJ01VFW90193.htm"
+            "link": "https://www.bmwconcord.com/new/WBS23HJ03VFW72743.htm"
         },
         {
             "vin": "WBS33HJ08VFW90823",
