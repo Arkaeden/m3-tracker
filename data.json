@@ -1,5 +1,5 @@
 {
-    "timestamp": "2026-06-29 15:46:05 PDT",
+    "timestamp": "2026-06-29 19:57:26 PDT",
     "vehicles": [
         {
             "vin": "WBS13HJ09VFX15994",
@@ -25,11 +25,11 @@
             "vin": "WBS13HJ07VFW72370",
             "year": "2027",
             "model": "M3",
-            "price": "$90583",
+            "price": "Call",
             "color": "Portimao Blue Metallic",
-            "dealer": "East Bay BMW",
-            "status": "In Transit",
-            "link": "https://www.eastbaybmw.com/new/WBS13HJ07VFW72370.htm"
+            "dealer": "BMW Concord",
+            "status": "On Lot",
+            "link": "https://www.bmwconcord.com/new/WBS13HJ07VFW72370.htm"
         },
         {
             "vin": "WBS23HK02VCY23278",
@@ -172,46 +172,6 @@
             "link": "https://www.stevenscreekbmw.com/new/WBS33HK00VCY58177.htm"
         },
         {
-            "vin": "WBS33HK00TCX31068",
-            "year": "2026",
-            "model": "M4 Competition",
-            "price": "$100305",
-            "color": "Sao Paulo Yellow",
-            "dealer": "BMW of Mountain View",
-            "status": "On Lot",
-            "link": "https://www.bmwofmountainview.com/new/WBS33HK00TCX31068.htm"
-        },
-        {
-            "vin": "WBS23HK07VCY63095",
-            "year": "2027",
-            "model": "M4 Competition",
-            "price": "$95035",
-            "color": "Tanzanite Blue II",
-            "dealer": "BMW of Mountain View",
-            "status": "In Transit",
-            "link": "https://www.bmwofmountainview.com/new/WBS23HK07VCY63095.htm"
-        },
-        {
-            "vin": "WBS43BA05VCY43161",
-            "year": "2027",
-            "model": "M4 Competition",
-            "price": "$108785",
-            "color": "Portimao Blue",
-            "dealer": "BMW of Mountain View",
-            "status": "In Transit",
-            "link": "https://www.bmwofmountainview.com/new/WBS43BA05VCY43161.htm"
-        },
-        {
-            "vin": "WBS43BA09VCY57614",
-            "year": "2027",
-            "model": "M4 Competition",
-            "price": "$112235",
-            "color": "Special Order Color",
-            "dealer": "BMW of Mountain View",
-            "status": "In Transit",
-            "link": "https://www.bmwofmountainview.com/new/WBS43BA09VCY57614.htm"
-        },
-        {
             "vin": "WBS23HJ05VFX07945",
             "year": "2027",
             "model": "M3 Competition",
@@ -320,6 +280,46 @@
             "dealer": "BMW of Fremont",
             "status": "In Transit",
             "link": "https://www.bmwoffremont.com/new/WBS33HK05VCY30939.htm"
+        },
+        {
+            "vin": "WBS23HJ00VFW89726",
+            "year": "2027",
+            "model": "M3 Competition",
+            "price": "Call",
+            "color": "Brooklyn Grey Metallic",
+            "dealer": "BMW Concord",
+            "status": "On Lot",
+            "link": "https://www.bmwconcord.com/new/WBS23HJ00VFW89726.htm"
+        },
+        {
+            "vin": "WBS23HJ03VFW72743",
+            "year": "2027",
+            "model": "M3 Competition",
+            "price": "Call",
+            "color": "Toronto Red Metallic",
+            "dealer": "BMW Concord",
+            "status": "On Lot",
+            "link": "https://www.bmwconcord.com/new/WBS23HJ03VFW72743.htm"
+        },
+        {
+            "vin": "WBS33HJ08VFW90823",
+            "year": "2027",
+            "model": "M3 Competition",
+            "price": "Call",
+            "color": "Tanzanite Blue II Metallic",
+            "dealer": "BMW Concord",
+            "status": "On Lot",
+            "link": "https://www.bmwconcord.com/new/WBS33HJ08VFW90823.htm"
+        },
+        {
+            "vin": "WBS33HJ08VFW82401",
+            "year": "2027",
+            "model": "M3 Competition",
+            "price": "Call",
+            "color": "Tanzanite Blue II Metallic",
+            "dealer": "BMW Concord",
+            "status": "On Lot",
+            "link": "https://www.bmwconcord.com/new/WBS33HJ08VFW82401.htm"
         },
         {
             "vin": "WBS13HK09TCX43047",
