@@ -1,5 +1,5 @@
 {
-    "timestamp": "2026-07-08 02:31:46 PDT",
+    "timestamp": "2026-07-08 08:25:54 PDT",
     "vehicles": [
         {
             "vin": "WBS13HJ09VFX15994",
@@ -112,16 +112,6 @@
             "link": "https://www.stevenscreekbmw.com/new/WBS13HJ05TFW44032.htm"
         },
         {
-            "vin": "WBS23HJ08VFW73483",
-            "year": "2027",
-            "model": "M3 Competition",
-            "price": "$93350",
-            "color": "Tanzanite Blue II Metallic",
-            "dealer": "Stevens Creek BMW",
-            "status": "On Lot",
-            "link": "https://www.stevenscreekbmw.com/new/WBS23HJ08VFW73483.htm"
-        },
-        {
             "vin": "WBS43BA02TCX08152",
             "year": "2026",
             "model": "M4 Competition",
@@ -140,16 +130,6 @@
             "dealer": "Stevens Creek BMW",
             "status": "On Lot",
             "link": "https://www.stevenscreekbmw.com/new/WBS33HK03VCY23181.htm"
-        },
-        {
-            "vin": "WBS33HK02VCY13810",
-            "year": "2027",
-            "model": "M4 Competition",
-            "price": "Call",
-            "color": "Tanzanite Blue II Metallic",
-            "dealer": "Stevens Creek BMW",
-            "status": "On Lot",
-            "link": "https://www.stevenscreekbmw.com/new/WBS33HK02VCY13810.htm"
         },
         {
             "vin": "WBS33HK09VCY18793",
