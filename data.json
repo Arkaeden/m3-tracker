@@ -1,5 +1,5 @@
 {
-    "timestamp": "2026-07-08 14:01:18 PDT",
+    "timestamp": "2026-07-08 19:23:14 PDT",
     "vehicles": [
         {
             "vin": "WBS13HJ09VFX15994",
@@ -168,7 +168,7 @@
             "price": "$98465",
             "color": "Black Sapphire",
             "dealer": "Stevens Creek BMW",
-            "status": "On Lot",
+            "status": "In Transit",
             "link": "https://www.stevenscreekbmw.com/new/WBS33HK00VCY58177.htm"
         },
         {
