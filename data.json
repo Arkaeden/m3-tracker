@@ -1,5 +1,5 @@
 {
-    "timestamp": "2026-07-08 19:23:14 PDT",
+    "timestamp": "2026-07-09 02:47:15 PDT",
     "vehicles": [
         {
             "vin": "WBS13HJ09VFX15994",
@@ -282,16 +282,6 @@
             "link": "https://www.bmwconcord.com/new/WBS33HJ01VFW90193.htm"
         },
         {
-            "vin": "WBS33HJ08VFW82401",
-            "year": "2027",
-            "model": "M3 Competition",
-            "price": "Call",
-            "color": "Tanzanite Blue II Metallic",
-            "dealer": "BMW Concord",
-            "status": "On Lot",
-            "link": "https://www.bmwconcord.com/new/WBS33HJ08VFW82401.htm"
-        },
-        {
             "vin": "WBS33HJ08VFW90823",
             "year": "2027",
             "model": "M3 Competition",
@@ -300,6 +290,16 @@
             "dealer": "BMW Concord",
             "status": "On Lot",
             "link": "https://www.bmwconcord.com/new/WBS33HJ08VFW90823.htm"
+        },
+        {
+            "vin": "WBS33HJ08VFW82401",
+            "year": "2027",
+            "model": "M3 Competition",
+            "price": "Call",
+            "color": "Tanzanite Blue II Metallic",
+            "dealer": "BMW Concord",
+            "status": "On Lot",
+            "link": "https://www.bmwconcord.com/new/WBS33HJ08VFW82401.htm"
         },
         {
             "vin": "WBS13HK09TCX43047",
