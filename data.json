@@ -1,5 +1,5 @@
 {
-    "timestamp": "2026-07-09 02:47:15 PDT",
+    "timestamp": "2026-07-09 09:42:16 PDT",
     "vehicles": [
         {
             "vin": "WBS13HJ09VFX15994",
@@ -200,6 +200,16 @@
             "dealer": "BMW of Mountain View",
             "status": "On Lot",
             "link": "https://www.bmwofmountainview.com/new/WBS33HK00TCX31068.htm"
+        },
+        {
+            "vin": "WBS33HK0XVCY09536",
+            "year": "2027",
+            "model": "M4 Competition",
+            "price": "$101490",
+            "color": "Isle of Man Green",
+            "dealer": "BMW of Mountain View",
+            "status": "On Lot",
+            "link": "https://www.bmwofmountainview.com/new/WBS33HK0XVCY09536.htm"
         },
         {
             "vin": "WBS13HK0XVCY23167",
