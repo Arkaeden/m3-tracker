@@ -1,5 +1,5 @@
 {
-    "timestamp": "2026-07-14 08:01:37 PDT",
+    "timestamp": "2026-07-14 13:30:30 PDT",
     "vehicles": [
         {
             "vin": "WBS13HJ09VFX15994",
@@ -20,6 +20,16 @@
             "dealer": "East Bay BMW",
             "status": "In Transit",
             "link": "https://www.eastbaybmw.com/new/WBS13HJ06VFX13247.htm"
+        },
+        {
+            "vin": "WBS13HJ00VFX15706",
+            "year": "2027",
+            "model": "M3",
+            "price": "$87783",
+            "color": "Tanzanite Blue II Metallic",
+            "dealer": "East Bay BMW",
+            "status": "In Transit",
+            "link": "https://www.eastbaybmw.com/new/WBS13HJ00VFX15706.htm"
         },
         {
             "vin": "WBS13HJ07VFW72370",
