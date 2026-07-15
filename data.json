@@ -1,5 +1,5 @@
 {
-    "timestamp": "2026-07-14 19:17:38 PDT",
+    "timestamp": "2026-07-15 02:13:12 PDT",
     "vehicles": [
         {
             "vin": "WBS13HJ09VFX15994",
@@ -130,6 +130,16 @@
             "dealer": "Stevens Creek BMW",
             "status": "On Lot",
             "link": "https://www.stevenscreekbmw.com/new/WBS33HK03VCY23181.htm"
+        },
+        {
+            "vin": "WBS33HK00VCY26913",
+            "year": "2027",
+            "model": "M4 Competition",
+            "price": "$119815",
+            "color": "Check Dealer",
+            "dealer": "Stevens Creek BMW",
+            "status": "On Lot",
+            "link": "https://www.stevenscreekbmw.com/new/WBS33HK00VCY26913.htm"
         },
         {
             "vin": "WBS33HK09VCY18793",
