@@ -1,5 +1,5 @@
 {
-    "timestamp": "2026-07-15 02:13:12 PDT",
+    "timestamp": "2026-07-15 08:06:21 PDT",
     "vehicles": [
         {
             "vin": "WBS13HJ09VFX15994",
@@ -172,16 +172,6 @@
             "link": "https://www.stevenscreekbmw.com/new/WBS33HK00VCY58177.htm"
         },
         {
-            "vin": "WBS33HJ03VFW92933",
-            "year": "2027",
-            "model": "M3 Competition",
-            "price": "$101085",
-            "color": "Dravit Gray",
-            "dealer": "BMW of Mountain View",
-            "status": "On Lot",
-            "link": "https://www.bmwofmountainview.com/new/WBS33HJ03VFW92933.htm"
-        },
-        {
             "vin": "WBS13HJ0XVFX03708",
             "year": "2027",
             "model": "M3",
@@ -240,16 +230,6 @@
             "dealer": "BMW of Fremont",
             "status": "On Lot",
             "link": "https://www.bmwoffremont.com/new/WBS33HK01TCX10715.htm"
-        },
-        {
-            "vin": "WBS43BA01TCX25542",
-            "year": "2026",
-            "model": "M4 Competition",
-            "price": "$108380",
-            "color": "Alpine White",
-            "dealer": "BMW of Fremont",
-            "status": "On Lot",
-            "link": "https://www.bmwoffremont.com/new/WBS43BA01TCX25542.htm"
         },
         {
             "vin": "WBS13HK08TCX53925",
